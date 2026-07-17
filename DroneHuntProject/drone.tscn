@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c5u4g4854n4tm"]
+
+[ext_resource type="Texture2D" uid="uid://w6b03cbhpg8m" path="res://icon.svg" id="1_uvgqj"]
+[ext_resource type="Script" uid="uid://nkfuomnj31mn" path="res://shootable.gd" id="2_d5du7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
+size = Vector2(128, 128)
+
+[node name="Drone" type="Area2D" unique_id=891162022]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=654114003]
+texture = ExtResource("1_uvgqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="Shootable" type="Node" parent="." unique_id=1343998070]
+script = ExtResource("2_d5du7")
+health = 5.0
+metadata/_custom_type_script = "uid://nkfuomnj31mn"

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://df0n1rdjhq435"]
+
+[ext_resource type="PackedScene" uid="uid://bxug866qtdnfb" path="res://gun_manager.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://der7ksfb5b2xv" path="res://wood_cover.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c5u4g4854n4tm" path="res://drone.tscn" id="3_lquwl"]
+
+[node name="Main" type="Node2D" unique_id=1392666010]
+
+[node name="Background" type="Node2D" parent="." unique_id=1685654612]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1965277682]
+
+[node name="GunManager" parent="." unique_id=1169279648 instance=ExtResource("1_h2yge")]
+
+[node name="WoodCover" parent="." unique_id=459543268 instance=ExtResource("2_1bvp3")]
+
+[node name="Drone" parent="." unique_id=891162022 instance=ExtResource("3_lquwl")]
