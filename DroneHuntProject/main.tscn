@@ -1,17 +1,43 @@
 [gd_scene format=3 uid="uid://df0n1rdjhq435"]
 
+[ext_resource type="Script" uid="uid://3fva2g5hmpep" path="res://camera_2d.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bxug866qtdnfb" path="res://gun_manager.tscn" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bexgfaoelbo6r" path="res://Assets/Placeholders/Beach_BG_ChatGPT.png" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://der7ksfb5b2xv" path="res://wood_cover.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c5u4g4854n4tm" path="res://drone.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://mced4ftu78tc" path="res://drone_spawner.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=1392666010]
 
 [node name="Background" type="Node2D" parent="." unique_id=1685654612]
 
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1521156582]
+position = Vector2(-696.00006, -296.99994)
+scale = Vector2(1.7810842, 1.7810841)
+texture = ExtResource("1_lquwl")
+centered = false
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1965277682]
+anchor_mode = 0
+script = ExtResource("1_1bvp3")
+min_x = -800.0
+max_x = 800.0
 
 [node name="GunManager" parent="." unique_id=1169279648 instance=ExtResource("1_h2yge")]
+position = Vector2(856, 524)
 
 [node name="WoodCover" parent="." unique_id=459543268 instance=ExtResource("2_1bvp3")]
+position = Vector2(856, 812)
 
-[node name="Drone" parent="." unique_id=891162022 instance=ExtResource("3_lquwl")]
+[node name="DroneSpawner" parent="." unique_id=294910798 instance=ExtResource("5_lquwl")]
+position = Vector2(-173, 348)
+
+[node name="SpawnPoint1" parent="DroneSpawner" index="0" unique_id=1206118577]
+position = Vector2(952, -232)
+
+[node name="SpawnPoint2" parent="DroneSpawner" index="1" unique_id=1572727838]
+position = Vector2(1344, 0)
+
+[node name="SpawnPoint3" parent="DroneSpawner" index="2" unique_id=2050533243]
+position = Vector2(1624, 288)
+
+[editable path="DroneSpawner"]

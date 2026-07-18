@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://der7ksfb5b2xv"]
 
-[ext_resource type="Texture2D" uid="uid://w6b03cbhpg8m" path="res://icon.svg" id="1_n2fdm"]
+[ext_resource type="Texture2D" uid="uid://cd5225rsyp1sl" path="res://Assets/Placeholders/WoodenFence_ChatGPT.png" id="1_62658"]
 [ext_resource type="Script" uid="uid://nkfuomnj31mn" path="res://shootable.gd" id="2_62658"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
-size = Vector2(58, 284)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra2i3"]
+size = Vector2(1051, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62658"]
+size = Vector2(1017, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bqht"]
+size = Vector2(182.13507, 597.3645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1ygt"]
+size = Vector2(214.84116, 603.5016)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpua7"]
+size = Vector2(183, 568.1703)
 
 [node name="WoodCover" type="StaticBody2D" unique_id=459543268]
 z_index = 1
@@ -12,15 +24,32 @@ collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1636871626]
 self_modulate = Color(0.53, 0.36216664, 0, 1)
-scale = Vector2(0.4453125, 2.2265625)
-texture = ExtResource("1_n2fdm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=855882255]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_wam8k")
+texture = ExtResource("1_62658")
 
 [node name="Shootable" type="Node" parent="." unique_id=212665426]
 script = ExtResource("2_62658")
 penetration_cost = 3.0
 health = 10.0
 metadata/_custom_type_script = "uid://nkfuomnj31mn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476159048]
+position = Vector2(1.5, -151)
+shape = SubResource("RectangleShape2D_ra2i3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2062404252]
+position = Vector2(6.5, 110)
+shape = SubResource("RectangleShape2D_62658")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1959579587]
+position = Vector2(-333.17896, -41.717632)
+rotation = -0.034071326
+shape = SubResource("RectangleShape2D_8bqht")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1819043659]
+position = Vector2(15.667904, -44.57391)
+rotation = -0.034071326
+shape = SubResource("RectangleShape2D_o1ygt")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=871604032]
+position = Vector2(351.5, -26.91486)
+shape = SubResource("RectangleShape2D_jpua7")

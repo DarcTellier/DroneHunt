@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://c5u4g4854n4tm"]
 
-[ext_resource type="Texture2D" uid="uid://w6b03cbhpg8m" path="res://icon.svg" id="1_uvgqj"]
+[ext_resource type="Script" uid="uid://b6ukdwwbmml32" path="res://drone.gd" id="1_puw62"]
 [ext_resource type="Script" uid="uid://nkfuomnj31mn" path="res://shootable.gd" id="2_d5du7"]
+[ext_resource type="Texture2D" uid="uid://c7aniffl87j2h" path="res://Assets/Placeholders/Drones/Drone_ChatGPT .png" id="2_puw62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
-size = Vector2(128, 128)
+size = Vector2(215, 75)
 
 [node name="Drone" type="Area2D" unique_id=891162022]
 collision_mask = 0
+script = ExtResource("1_puw62")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=654114003]
-texture = ExtResource("1_uvgqj")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_puw62")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=768504801]
+position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_wam8k")
 
 [node name="Shootable" type="Node" parent="." unique_id=1343998070]
