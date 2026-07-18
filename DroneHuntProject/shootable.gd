@@ -1,5 +1,6 @@
 class_name Shootable
-extends Node
+extends Area2D
+
 
 signal hit_received(
 	damage: float,
@@ -9,12 +10,20 @@ signal hit_received(
 
 signal destroyed
 
+
 @export_category("Bullet Resistance")
+
 @export var penetration_cost: float = 1.0
 
+
 @export_category("Health")
+
 @export var health: float = 1.0
-@export var destroy_parent_when_dead: bool = true
+
+@export var delete_when_destroyed: bool = true
+
+
+var is_destroyed: bool = false
 
 
 func receive_bullet(
@@ -22,10 +31,13 @@ func receive_bullet(
 	hit_position: Vector2,
 	remaining_penetration: float
 ) -> void:
+	if is_destroyed:
+		return
+
 	health -= damage
 
 	print(
-		get_parent().name,
+		name,
 		" was hit. Damage: ",
 		damage,
 		" | Health: ",
@@ -45,7 +57,12 @@ func receive_bullet(
 
 
 func destroy() -> void:
+	if is_destroyed:
+		return
+
+	is_destroyed = true
+
 	destroyed.emit()
 
-	if destroy_parent_when_dead:
-		get_parent().queue_free()
+	if delete_when_destroyed:
+		queue_free()

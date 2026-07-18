@@ -1,15 +1,25 @@
 class_name GunManager
 extends Node2D
-#"The game unfolds the longer you play, but the unfolding is the knowledge gained. dARCT"
+
+
+# "The game unfolds the longer you play,
+# but the unfolding is the knowledge gained. dARCT"
+
+
 @export_category("Bullet")
+
 @export var bullet_damage: float = 10.0
 @export var penetration_power: float = 5.0
 @export var maximum_hits_per_shot: int = 10
 
+
 @export_category("Collision")
+
 @export_flags_2d_physics var bullet_collision_mask: int = 1
 
+
 @export_category("Debug")
+
 @export var print_shot_results: bool = true
 
 
@@ -51,6 +61,7 @@ func fire_hitscan(target_position: Vector2) -> void:
 		if result.is_empty():
 			if print_shot_results and hit_number == 0:
 				print("Miss")
+
 			break
 
 		var collider := result.get("collider") as CollisionObject2D
@@ -58,18 +69,21 @@ func fire_hitscan(target_position: Vector2) -> void:
 		if collider == null:
 			break
 
-		var shootable := collider.get_node_or_null("Shootable") as Shootable
+		var shootable := _find_shootable(collider)
 
 		if shootable == null:
 			if print_shot_results:
-				print(collider.name, " has no Shootable component.")
-			break
+				print(collider.name, " is not Shootable.")
+
+			excluded_objects.append(collider.get_rid())
+			continue
 
 		var penetration_before_hit := remaining_penetration
 
 		remaining_penetration -= shootable.penetration_cost
 
-		# Damage is based on how much bullet power existed before this hit.
+		# Damage is based on how much penetration power
+		# existed before hitting this object.
 		var damage_ratio := clampf(
 			penetration_before_hit / penetration_power,
 			0.0,
@@ -81,7 +95,7 @@ func fire_hitscan(target_position: Vector2) -> void:
 		if print_shot_results:
 			print(
 				"Hit: ",
-				collider.name,
+				shootable.name,
 				" | Damage: ",
 				damage_dealt,
 				" | Cost: ",
@@ -100,5 +114,21 @@ func fire_hitscan(target_position: Vector2) -> void:
 
 		if remaining_penetration < 0.0:
 			if print_shot_results:
-				print("Bullet stopped by ", collider.name)
+				print("Bullet stopped by ", shootable.name)
+
 			break
+
+
+func _find_shootable(collider: CollisionObject2D) -> Shootable:
+	if collider is Shootable:
+		return collider as Shootable
+
+	var current_node: Node = collider.get_parent()
+
+	while current_node != null:
+		if current_node is Shootable:
+			return current_node as Shootable
+
+		current_node = current_node.get_parent()
+
+	return null

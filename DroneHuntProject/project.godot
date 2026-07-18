@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+WorldEvents="*uid://dwgxi2porgg3r"
 ScoreManager="*uid://kmmqyq488jsh"
 
 [display]

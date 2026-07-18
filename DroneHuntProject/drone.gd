@@ -1,32 +1,46 @@
-extends Area2D
+class_name Drone
+extends Shootable
 
-@export var move_speed: float = 220.0
-@export var left_limit: float = 900.0
-@export var right_limit: float = 1700.0
-@export var direction: float = 1.0
-@export var score_value: int = 100
 
+@export_category("Activation")
+
+@export_range(0.0, 3600.0, 0.1, "suffix:s")
+var activation_time: float = 0.0
+
+@export var required_event: WorldEvents.GlobalEvent = \
+	WorldEvents.GlobalEvent.NONE
+
+
+@onready var event_activator: EventActivator = $EventActivator
+@onready var behavior_controller: BehaviorController = $BehaviorController
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var shootable: Shootable = $Shootable
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+
+var drone_is_active: bool = false
 
 
 func _ready() -> void:
-	shootable.destroyed.connect(_on_destroyed)
+	event_activator.configure(
+		activation_time,
+		required_event
+	)
+
+	event_activator.activated.connect(_on_event_activated)
+
+	_set_drone_active(false)
 
 
-func _process(delta: float) -> void:
-	global_position.x += move_speed * direction * delta
+func _set_drone_active(active: bool) -> void:
+	drone_is_active = active
 
-	if global_position.x >= right_limit:
-		global_position.x = right_limit
-		direction = -1.0
+	sprite.visible = active
+	collision_shape.set_deferred("disabled", not active)
 
-	elif global_position.x <= left_limit:
-		global_position.x = left_limit
-		direction = 1.0
-
-	sprite.flip_h = direction < 0.0
+	set_process(active)
+	set_physics_process(active)
 
 
-func _on_destroyed() -> void:
-	ScoreManager.add_score(score_value)
+func _on_event_activated() -> void:
+	_set_drone_active(true)
+	behavior_controller.start(self)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bifjr3v402m01"]
+
+[ext_resource type="Script" uid="uid://c4vgbp1fdsie" path="res://BehaviorController.gd" id="1_8trnc"]
+
+[node name="BehaviorController" type="Node" unique_id=334432352]
+script = ExtResource("1_8trnc")

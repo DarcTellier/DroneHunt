@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://c5u4g4854n4tm"]
 
 [ext_resource type="Script" uid="uid://b6ukdwwbmml32" path="res://drone.gd" id="1_puw62"]
-[ext_resource type="Script" uid="uid://nkfuomnj31mn" path="res://shootable.gd" id="2_d5du7"]
 [ext_resource type="Texture2D" uid="uid://c7aniffl87j2h" path="res://Assets/Placeholders/Drones/Drone_ChatGPT .png" id="2_puw62"]
+[ext_resource type="PackedScene" uid="uid://umo75u54c3en" path="res://event_activator.tscn" id="4_30i2v"]
+[ext_resource type="PackedScene" uid="uid://bifjr3v402m01" path="res://behavior_controller.tscn" id="5_2bwtr"]
+[ext_resource type="PackedScene" uid="uid://cvop4vdeogrpj" path="res://Behavior/DroneBehavior/ZigZagBehavior.tscn" id="6_2bwtr"]
+[ext_resource type="PackedScene" uid="uid://dbjkqps1uqg15" path="res://Behavior/DroneBehavior/FlyToMarker.tscn" id="6_6d57s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
 size = Vector2(215, 75)
@@ -10,6 +13,10 @@ size = Vector2(215, 75)
 [node name="Drone" type="Area2D" unique_id=891162022]
 collision_mask = 0
 script = ExtResource("1_puw62")
+activation_time = null
+required_event = null
+penetration_cost = null
+health = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=654114003]
 scale = Vector2(0.15, 0.15)
@@ -19,7 +26,11 @@ texture = ExtResource("2_puw62")
 position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_wam8k")
 
-[node name="Shootable" type="Node" parent="." unique_id=1343998070]
-script = ExtResource("2_d5du7")
-health = 5.0
-metadata/_custom_type_script = "uid://nkfuomnj31mn"
+[node name="EventActivator" parent="." unique_id=1249467135 instance=ExtResource("4_30i2v")]
+activation_time = 5.0
+
+[node name="BehaviorController" parent="." unique_id=334432352 instance=ExtResource("5_2bwtr")]
+
+[node name="FlyToMarker" parent="BehaviorController" unique_id=335442041 instance=ExtResource("6_6d57s")]
+
+[node name="ZigZagBehavior" parent="BehaviorController" unique_id=859902181 instance=ExtResource("6_2bwtr")]

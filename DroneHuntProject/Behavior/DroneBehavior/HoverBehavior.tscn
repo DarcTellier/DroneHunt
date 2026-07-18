@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chbbtgrfnby1q"]
+
+[ext_resource type="Script" uid="uid://cvc61rwehj8j2" path="res://Behavior/DroneBehavior/HoverBehavior.gd" id="1_e51gc"]
+
+[node name="HoverBehavior" type="Node" unique_id=984130039]
+script = ExtResource("1_e51gc")
