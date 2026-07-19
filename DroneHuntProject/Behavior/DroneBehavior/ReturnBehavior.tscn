@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddtmx84t3xros"]
 
-[ext_resource type="Script" uid="uid://x3jecrn3k6yd" path="res://Behavior/DroneBehavior/ReturnBehavior.gd" id="1_7nov0"]
+[ext_resource type="Script" uid="uid://x3jecrn3k6yd" path="res://Behavior/DroneBehavior/BehaviorScripts/ReturnBehavior.gd" id="1_7nov0"]
 
 [node name="ReturnBehavior" type="Node" unique_id=2104944052]
 script = ExtResource("1_7nov0")

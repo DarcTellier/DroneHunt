@@ -1,7 +1,9 @@
 class_name EventActivator
 extends Node
 
+
 signal activated
+
 
 @export_category("Activation Conditions")
 
@@ -11,21 +13,22 @@ var activation_time: float = 0.0
 @export var required_event: WorldEvents.GlobalEvent = \
 	WorldEvents.GlobalEvent.NONE
 
+
 @export_category("Settings")
 
 @export var activate_only_once: bool = true
-@export var activate_on_ready_if_valid: bool = true
 
 
 var is_activated: bool = false
 var elapsed_time: float = 0.0
 var is_configured: bool = false
+var timer_is_running: bool = false
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
-
-	WorldEvents.event_changed.connect(_on_world_event_changed)
+	WorldEvents.event_changed.connect(
+		_on_world_event_changed
+	)
 
 
 func configure(
@@ -34,14 +37,18 @@ func configure(
 ) -> void:
 	activation_time = new_activation_time
 	required_event = new_required_event
-	is_configured = true
 
-	if activate_on_ready_if_valid:
-		_check_activation()
+	elapsed_time = 0.0
+	is_activated = false
+	is_configured = true
+	timer_is_running = false
 
 
 func _process(delta: float) -> void:
 	if not is_configured:
+		return
+
+	if not timer_is_running:
 		return
 
 	if is_activated and activate_only_once:
@@ -51,15 +58,38 @@ func _process(delta: float) -> void:
 	_check_activation()
 
 
+func start_timer() -> void:
+	if not is_configured:
+		return
+
+	timer_is_running = true
+	_check_activation()
+
+
+func pause_timer() -> void:
+	timer_is_running = false
+
+
+func reset() -> void:
+	is_activated = false
+	elapsed_time = 0.0
+	timer_is_running = false
+
+
 func _check_activation() -> void:
 	if not is_configured:
+		return
+
+	if not timer_is_running:
 		return
 
 	if is_activated and activate_only_once:
 		return
 
 	var time_ready: bool = elapsed_time >= activation_time
-	var event_ready: bool = WorldEvents.is_active(required_event)
+	var event_ready: bool = WorldEvents.is_active(
+		required_event
+	)
 
 	if time_ready and event_ready:
 		activate()
@@ -70,12 +100,9 @@ func activate() -> void:
 		return
 
 	is_activated = true
+	timer_is_running = false
+
 	activated.emit()
-
-
-func reset() -> void:
-	is_activated = false
-	elapsed_time = 0.0
 
 
 func _on_world_event_changed(

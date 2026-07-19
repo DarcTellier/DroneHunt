@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Quit="*uid://62x0q2iw2k6o"
+GameSession="*uid://xgpcpjho5dlr"
 WorldEvents="*uid://dwgxi2porgg3r"
 ScoreManager="*uid://kmmqyq488jsh"
 

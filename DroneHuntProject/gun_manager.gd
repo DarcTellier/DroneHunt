@@ -29,68 +29,111 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func fire_at_mouse() -> void:
-	var mouse_position := get_global_mouse_position()
+	var mouse_position: Vector2 = get_global_mouse_position()
+
+	GameSession.record_shot()
 
 	if print_shot_results:
 		print("")
 		print("SHOT FIRED AT: ", mouse_position)
 
-	fire_hitscan(mouse_position)
+	var shot_hit_something: bool = fire_hitscan(
+		mouse_position
+	)
+
+	if shot_hit_something:
+		GameSession.record_hit()
 
 
-func fire_hitscan(target_position: Vector2) -> void:
-	var space_state := get_world_2d().direct_space_state
+func fire_hitscan(
+	target_position: Vector2
+) -> bool:
+	var space_state: PhysicsDirectSpaceState2D = (
+		get_world_2d().direct_space_state
+	)
 
-	var remaining_penetration := penetration_power
+	var remaining_penetration: float = penetration_power
 	var excluded_objects: Array[RID] = []
 
-	for hit_number in range(maximum_hits_per_shot):
-		var query := PhysicsRayQueryParameters2D.create(
-			target_position,
-			target_position,
-			bullet_collision_mask,
-			excluded_objects
+	var shot_hit_something: bool = false
+
+	for hit_number: int in range(
+		maximum_hits_per_shot
+	):
+		var query: PhysicsRayQueryParameters2D = (
+			PhysicsRayQueryParameters2D.create(
+				target_position,
+				target_position,
+				bullet_collision_mask,
+				excluded_objects
+			)
 		)
 
 		query.collide_with_areas = true
 		query.collide_with_bodies = true
 		query.hit_from_inside = true
 
-		var result := space_state.intersect_ray(query)
+		var result: Dictionary = (
+			space_state.intersect_ray(query)
+		)
 
 		if result.is_empty():
-			if print_shot_results and hit_number == 0:
+			if (
+				print_shot_results
+				and hit_number == 0
+			):
 				print("Miss")
 
 			break
 
-		var collider := result.get("collider") as CollisionObject2D
+		var collider: CollisionObject2D = (
+			result.get("collider")
+			as CollisionObject2D
+		)
 
 		if collider == null:
 			break
 
-		var shootable := _find_shootable(collider)
+		var shootable: Shootable = _find_shootable(
+			collider
+		)
 
 		if shootable == null:
 			if print_shot_results:
-				print(collider.name, " is not Shootable.")
+				print(
+					collider.name,
+					" is not Shootable."
+				)
 
-			excluded_objects.append(collider.get_rid())
+			excluded_objects.append(
+				collider.get_rid()
+			)
+
 			continue
 
-		var penetration_before_hit := remaining_penetration
+		shot_hit_something = true
 
-		remaining_penetration -= shootable.penetration_cost
-
-		# Damage is based on how much penetration power
-		# existed before hitting this object.
-		var damage_ratio := clampf(
-			penetration_before_hit / penetration_power,
-			0.0,
-			1.0
+		var penetration_before_hit: float = (
+			remaining_penetration
 		)
 
-		var damage_dealt := bullet_damage * damage_ratio
+		remaining_penetration -= (
+			shootable.penetration_cost
+		)
+
+		var damage_ratio: float = 0.0
+
+		if penetration_power > 0.0:
+			damage_ratio = clampf(
+				penetration_before_hit
+				/ penetration_power,
+				0.0,
+				1.0
+			)
+
+		var damage_dealt: float = (
+			bullet_damage * damage_ratio
+		)
 
 		if print_shot_results:
 			print(
@@ -107,19 +150,31 @@ func fire_hitscan(target_position: Vector2) -> void:
 		shootable.receive_bullet(
 			damage_dealt,
 			target_position,
-			maxf(remaining_penetration, 0.0)
+			maxf(
+				remaining_penetration,
+				0.0
+			)
 		)
 
-		excluded_objects.append(collider.get_rid())
+		excluded_objects.append(
+			collider.get_rid()
+		)
 
 		if remaining_penetration < 0.0:
 			if print_shot_results:
-				print("Bullet stopped by ", shootable.name)
+				print(
+					"Bullet stopped by ",
+					shootable.name
+				)
 
 			break
 
+	return shot_hit_something
 
-func _find_shootable(collider: CollisionObject2D) -> Shootable:
+
+func _find_shootable(
+	collider: CollisionObject2D
+) -> Shootable:
 	if collider is Shootable:
 		return collider as Shootable
 

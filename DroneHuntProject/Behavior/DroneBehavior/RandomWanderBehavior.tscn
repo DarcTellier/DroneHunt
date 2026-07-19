@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bnd6an3p70kat"]
+
+[ext_resource type="Script" uid="uid://cv41eg8a4cg6w" path="res://Behavior/DroneBehavior/BehaviorScripts/RandomWanderBehavior.gd" id="1_a8r8a"]
+
+[node name="RandomWanderBehavior" type="Node" unique_id=253137632]
+script = ExtResource("1_a8r8a")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbjkqps1uqg15"]
 
-[ext_resource type="Script" uid="uid://c38ab2mqtl7vh" path="res://FlyToMarker.gd" id="1_s4og1"]
+[ext_resource type="Script" uid="uid://c38ab2mqtl7vh" path="res://Behavior/DroneBehavior/BehaviorScripts/FlyToMarker.gd" id="1_s4og1"]
 
 [node name="FlyToMarker" type="Node" unique_id=335442041]
 script = ExtResource("1_s4og1")

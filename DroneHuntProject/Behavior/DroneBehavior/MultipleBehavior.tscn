@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://djnifcbfh06jd"]
+
+[ext_resource type="Script" uid="uid://scs3h21ueb15" path="res://Behavior/DroneBehavior/BehaviorScripts/MultipleBehavior.gd" id="1_02b6l"]
+
+[node name="MultipleBehavior" type="Node" unique_id=1909319110]
+script = ExtResource("1_02b6l")

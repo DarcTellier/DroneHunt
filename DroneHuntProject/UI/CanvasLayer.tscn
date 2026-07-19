@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://xulv0vwrxci5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kek77"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vw27"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_igrlr"]
+font_size = 160
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1080229675]
+
+[node name="HUD" type="Control" parent="." unique_id=1065350124]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=307194546]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SCORE 000000"
+label_settings = SubResource("LabelSettings_kek77")
+
+[node name="TimerLabel" type="Label" parent="HUD" unique_id=570421941]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "01:00.000"
+label_settings = SubResource("LabelSettings_5vw27")
+
+[node name="CountdownLabel" type="Label" parent="HUD" unique_id=412725577]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_igrlr")
+horizontal_alignment = 1
+vertical_alignment = 1

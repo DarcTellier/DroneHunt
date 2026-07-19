@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://2dxbd84pk0jd"]
+
+[ext_resource type="Script" uid="uid://blovsneppytki" path="res://GameOver.gd" id="1_40baj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4gaj"]
+font_size = 100
+outline_size = 21
+outline_color = Color(0.089999974, 0.4843334, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_4g1ep"]
+font_size = 42
+
+[node name="GameOver" type="Control" unique_id=504636733]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_40baj")
+metadata/_edit_vertical_guides_ = [960.0]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1989717957]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ResultsPanel" type="Panel" parent="." unique_id=626408106]
+self_modulate = Color(1, 1, 1, 0.59607846)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GameOver" type="Label" parent="ResultsPanel" unique_id=628548387]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -258.5
+offset_top = 48.0
+offset_right = 258.5
+offset_bottom = 185.0
+grow_horizontal = 2
+text = "GameOver"
+label_settings = SubResource("LabelSettings_g4gaj")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultsPanel" unique_id=1129231692]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -319.5
+offset_right = 456.0
+offset_bottom = 233.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RoundOverLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=2039999420]
+layout_mode = 2
+text = "ROUND OVER
+"
+label_settings = SubResource("LabelSettings_ra2i3")
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=1865188172]
+layout_mode = 2
+text = "FINAL SCORE       000000"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="ShotsFiredLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=2075819905]
+layout_mode = 2
+text = "SHOTS HIT         000"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="ShotsHitLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=824506020]
+layout_mode = 2
+text = "SHOTS HIT         000"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="ShotsMissedLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=166997229]
+layout_mode = 2
+text = "SHOTS MISSED      000"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="AccuracyLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=1188164668]
+layout_mode = 2
+text = "ACCURACY          000.0%"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="DronesDestroyedLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=1404651100]
+layout_mode = 2
+text = "DRONES DESTROYED  000"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="PointsPerShotLabel" type="Label" parent="ResultsPanel/VBoxContainer" unique_id=1428397815]
+layout_mode = 2
+text = "POINTS PER SHOT   000.0"
+label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1232901925]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 351.0
+offset_bottom = 417.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="HBoxContainer" unique_id=2074952209]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "TryAgainButton"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=343034005]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+accessibility_region = true
+
+[node name="MainMenuButton" type="Button" parent="HBoxContainer" unique_id=1270738464]
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 42
+text = "MainMenuButton"
+
+[node name="Cursor" type="Label" parent="." unique_id=1756305383]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 896.0
+offset_right = 467.0
+offset_bottom = 955.0
+text = "▶"
+label_settings = SubResource("LabelSettings_4g1ep")

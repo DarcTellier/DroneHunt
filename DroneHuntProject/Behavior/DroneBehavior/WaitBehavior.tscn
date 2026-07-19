@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gl5ge8f1lyv3"]
 
-[ext_resource type="Script" uid="uid://h32kfp1bnsk0" path="res://Behavior/DroneBehavior/WaitBehavior.gd" id="1_7aqrw"]
+[ext_resource type="Script" uid="uid://h32kfp1bnsk0" path="res://Behavior/DroneBehavior/BehaviorScripts/WaitBehavior.gd" id="1_7aqrw"]
 
 [node name="WaitBehavior" type="Node" unique_id=157575204]
 script = ExtResource("1_7aqrw")

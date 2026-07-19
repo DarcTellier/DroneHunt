@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://hvxje3pcp0ia"]
+
+[ext_resource type="Script" uid="uid://23pm0xwr65v7" path="res://MainMenu.gd" id="1_3gv5x"]
+[ext_resource type="Texture2D" uid="uid://dofy42unjub8x" path="res://Assets/DroneHuntLogo2.png" id="1_hsak0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
+font_size = 42
+
+[node name="MainMenu" type="Control" unique_id=69825339]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gv5x")
+game_a_scene_path = "uid://df0n1rdjhq435"
+game_b_scene_path = "uid://df0n1rdjhq435"
+game_c_scene_path = "uid://df0n1rdjhq435"
+metadata/_edit_vertical_guides_ = [960.0]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1197344937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1088900952]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -214.0
+offset_right = -416.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_hsak0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MenuButtons" type="Control" parent="." unique_id=674523974]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameAButton" type="Button" parent="MenuButtons" unique_id=443982374]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 704.0
+offset_top = 616.0
+offset_right = 1344.0
+offset_bottom = 656.0
+
+[node name="GameBButton" type="Button" parent="MenuButtons" unique_id=789912999]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 704.0
+offset_top = 664.0
+offset_right = 1344.0
+offset_bottom = 704.0
+
+[node name="GameCButton" type="Button" parent="MenuButtons" unique_id=1895309547]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 704.0
+offset_top = 712.0
+offset_right = 1344.0
+offset_bottom = 752.0
+
+[node name="Cursor" type="Label" parent="." unique_id=583610211]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 608.0
+offset_right = 677.0
+offset_bottom = 667.0
+text = "▶"
+label_settings = SubResource("LabelSettings_ra2i3")
