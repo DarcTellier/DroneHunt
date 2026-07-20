@@ -17,22 +17,31 @@ var activation_time: float = 0.0
 	WorldEvents.GlobalEvent.NONE
 
 
-@onready var event_activator: EventActivator = $EventActivator
+@onready var event_activator: EventActivator = \
+	$EventActivator
 
 @onready var behavior_controller: BehaviorController = \
 	$BehaviorController
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = \
+	$Sprite2D
 
 @onready var collision_shape: CollisionShape2D = \
 	$CollisionShape2D
+
+@onready var health_bar: HealthBar = \
+	$HealthBar
 
 
 var drone_is_active: bool = false
 var score_was_awarded: bool = false
 
+var maximum_health: float = 1.0
+
 
 func _ready() -> void:
+	maximum_health = health
+
 	event_activator.configure(
 		activation_time,
 		required_event
@@ -44,6 +53,16 @@ func _ready() -> void:
 
 	if not destroyed.is_connected(_on_destroyed):
 		destroyed.connect(_on_destroyed)
+
+	if not hit_received.is_connected(_on_hit_received):
+		hit_received.connect(_on_hit_received)
+
+	health_bar.set_health(
+		health,
+		maximum_health
+	)
+
+	health_bar.hide_immediately()
 
 	_set_drone_active(false)
 
@@ -61,9 +80,18 @@ func pause_activation_timer() -> void:
 
 func reset_drone() -> void:
 	score_was_awarded = false
+	is_destroyed = false
+	health = maximum_health
 
 	behavior_controller.stop()
 	event_activator.reset()
+
+	health_bar.set_health(
+		health,
+		maximum_health
+	)
+
+	health_bar.hide_immediately()
 
 	_set_drone_active(false)
 
@@ -72,6 +100,9 @@ func _set_drone_active(active: bool) -> void:
 	drone_is_active = active
 
 	sprite.visible = active
+
+	if not active:
+		health_bar.hide_immediately()
 
 	collision_shape.set_deferred(
 		"disabled",
@@ -84,7 +115,19 @@ func _set_drone_active(active: bool) -> void:
 
 func _on_event_activated() -> void:
 	_set_drone_active(true)
+
 	behavior_controller.start(self)
+
+
+func _on_hit_received(
+	_damage: float,
+	_hit_position: Vector2,
+	_remaining_penetration: float
+) -> void:
+	health_bar.set_health(
+		health,
+		maximum_health
+	)
 
 
 func _on_destroyed() -> void:
@@ -92,6 +135,8 @@ func _on_destroyed() -> void:
 		return
 
 	score_was_awarded = true
+
+	health_bar.hide_immediately()
 
 	ScoreManager.add_score(score_value)
 	GameSession.record_drone_destroyed()

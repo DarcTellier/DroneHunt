@@ -39,7 +39,7 @@ position = Vector2(788, 603)
 activation_time = 3.0
 required_event = 0
 penetration_cost = 1.0
-health = 1.0
+health = 100.0
 
 [node name="FlyToMarker" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../DroneStartMarker")
