@@ -2,7 +2,7 @@ class_name Drone
 extends Shootable
 
 
-const FloatingDamageScene = preload(
+const FLOATING_DAMAGE_SCENE: PackedScene = preload(
 	"res://Effects/FloatingDamage.tscn"
 )
 
@@ -51,26 +51,9 @@ var maximum_health: float = 1.0
 func _ready() -> void:
 	maximum_health = health
 
-	event_activator.configure(
-		activation_time,
-		required_event
-	)
-
-	event_activator.activated.connect(
-		_on_event_activated
-	)
-
-	if not destroyed.is_connected(_on_destroyed):
-		destroyed.connect(_on_destroyed)
-
-	if not hit_received.is_connected(_on_hit_received):
-		hit_received.connect(_on_hit_received)
-
-	health_bar.set_health(
-		health,
-		maximum_health
-	)
-
+	_configure_activation()
+	_connect_signals()
+	_update_health_bar()
 	health_bar.hide_immediately()
 
 	_set_drone_active(false)
@@ -95,14 +78,29 @@ func reset_drone() -> void:
 	behavior_controller.stop()
 	event_activator.reset()
 
-	health_bar.set_health(
-		health,
-		maximum_health
-	)
-
+	_update_health_bar()
 	health_bar.hide_immediately()
 
 	_set_drone_active(false)
+
+
+func _configure_activation() -> void:
+	event_activator.configure(
+		activation_time,
+		required_event
+	)
+
+	event_activator.activated.connect(
+		_on_event_activated
+	)
+
+
+func _connect_signals() -> void:
+	if not destroyed.is_connected(_on_destroyed):
+		destroyed.connect(_on_destroyed)
+
+	if not hit_received.is_connected(_on_hit_received):
+		hit_received.connect(_on_hit_received)
 
 
 func _set_drone_active(active: bool) -> void:
@@ -124,24 +122,26 @@ func _set_drone_active(active: bool) -> void:
 
 func _on_event_activated() -> void:
 	_set_drone_active(true)
-
 	behavior_controller.start(self)
 
 
 func _on_hit_received(
 	damage: float,
-	_hit_position: Vector2,
+	hit_position: Vector2,
 	_remaining_penetration: float
 ) -> void:
-
-	health_bar.set_health(
-		health,
-		maximum_health
-	)
+	_update_health_bar()
 
 	spawn_floating_text(
 		str(int(round(damage))),
 		Color.WHITE
+	)
+
+	var screen_hit_position: Vector2 = \
+		get_viewport().get_canvas_transform() * hit_position
+
+	CameraEffects.hit_marker(
+		screen_hit_position
 	)
 
 
@@ -149,9 +149,14 @@ func spawn_floating_text(
 	text: String,
 	color: Color = Color.WHITE
 ) -> void:
+	var popup := FLOATING_DAMAGE_SCENE.instantiate() \
+		as FloatingDamage
 
-	var popup: FloatingDamage = \
-		FloatingDamageScene.instantiate()
+	if popup == null:
+		push_warning(
+			"Drone could not instantiate FloatingDamage."
+		)
+		return
 
 	get_tree().current_scene.add_child(
 		popup
@@ -166,6 +171,13 @@ func spawn_floating_text(
 	)
 
 
+func _update_health_bar() -> void:
+	health_bar.set_health(
+		health,
+		maximum_health
+	)
+
+
 func _on_destroyed() -> void:
 	if score_was_awarded:
 		return
@@ -174,5 +186,8 @@ func _on_destroyed() -> void:
 
 	health_bar.hide_immediately()
 
-	ScoreManager.add_score(score_value)
+	ScoreManager.add_score(
+		score_value
+	)
+
 	GameSession.record_drone_destroyed()

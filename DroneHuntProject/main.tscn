@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bxug866qtdnfb" path="res://gun_manager.tscn" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bexgfaoelbo6r" path="res://Assets/Placeholders/Beach_BG_ChatGPT.png" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xisonsue8dh4" path="res://Behavior/Locations/GameA/RoundController.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b7yt4y70h4p2e" path="res://Effects/CameraEffects/CameraEffects.tscn" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://c5u4g4854n4tm" path="res://drone.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://u15sj4ela27b" path="res://Assets/HitMarker_128.svg" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://xulv0vwrxci5" path="res://UI/CanvasLayer.tscn" id="6_272bh"]
 [ext_resource type="Script" uid="uid://debu26j7dvvny" path="res://ScoreLabel.gd" id="8_5vw27"]
 
@@ -13,7 +15,8 @@
 script = ExtResource("1_272bh")
 
 [node name="RoundController" parent="." unique_id=803465436 node_paths=PackedStringArray("countdown_label", "timer_label") instance=ExtResource("5_7mycd")]
-round_duration = 10.0
+countdown_step_duration = 0.1
+round_duration = 909.7
 countdown_label = NodePath("../CanvasLayer/HUD/CountdownLabel")
 timer_label = NodePath("../CanvasLayer/HUD/TimerLabel")
 
@@ -31,14 +34,20 @@ script = ExtResource("1_1bvp3")
 min_x = -800.0
 max_x = 800.0
 
+[node name="CameraEffects" parent="." unique_id=1842931647 instance=ExtResource("5_kek77")]
+
+[node name="CameraShakeController" parent="CameraEffects" index="1" unique_id=1559104345 node_paths=PackedStringArray("gameplay_camera")]
+gameplay_camera = NodePath("../../Camera2D")
+
+[node name="HitMarkerController" parent="CameraEffects" index="2" unique_id=330446735]
+marker_texture = ExtResource("6_4c57u")
+
 [node name="GunManager" parent="." unique_id=1169279648 instance=ExtResource("1_h2yge")]
 position = Vector2(856, 524)
 
 [node name="Drone" parent="." unique_id=891162022 instance=ExtResource("5_lquwl")]
 position = Vector2(788, 603)
 activation_time = 3.0
-required_event = 0
-penetration_cost = 1.0
 health = 100.0
 
 [node name="FlyToMarker" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
@@ -64,5 +73,6 @@ mouse_filter = 2
 [node name="ScoreLabel" parent="CanvasLayer/HUD" index="0" unique_id=307194546]
 script = ExtResource("8_5vw27")
 
+[editable path="CameraEffects"]
 [editable path="Drone"]
 [editable path="CanvasLayer"]

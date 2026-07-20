@@ -33,6 +33,9 @@ func fire_at_mouse() -> void:
 
 	GameSession.record_shot()
 
+	CameraEffects.screen_flash()
+	CameraEffects.shake()
+
 	if print_shot_results:
 		print("")
 		print("SHOT FIRED AT: ", mouse_position)
@@ -43,7 +46,6 @@ func fire_at_mouse() -> void:
 
 	if shot_hit_something:
 		GameSession.record_hit()
-
 
 func fire_hitscan(
 	target_position: Vector2
