@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dg16xkreuywyr"]
+
+[ext_resource type="Script" uid="uid://c24xmux2bh2wg" path="res://Behaviors/ChangeLayer/ChangeLayerBehavior.gd" id="1_hr6r3"]
+
+[node name="ChangeLayerBehavior" type="Node" unique_id=1901566843]
+script = ExtResource("1_hr6r3")

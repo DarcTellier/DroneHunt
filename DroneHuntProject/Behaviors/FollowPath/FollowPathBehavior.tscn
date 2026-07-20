@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c61ehvvarypky"]
+
+[ext_resource type="Script" uid="uid://dod55gvbw36bh" path="res://Behaviors/FollowPath/FollowPathBehavior.gd" id="1_7s3my"]
+
+[node name="FollowPathBehavior" type="Node" unique_id=1343817353]
+script = ExtResource("1_7s3my")

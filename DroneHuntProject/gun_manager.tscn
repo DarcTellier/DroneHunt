@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bxug866qtdnfb"]
-
-[ext_resource type="Script" uid="uid://5ym84of7so5k" path="res://gun_manager.gd" id="1_silsl"]
-
-[node name="GunManager" type="Node2D" unique_id=1169279648]
-script = ExtResource("1_silsl")

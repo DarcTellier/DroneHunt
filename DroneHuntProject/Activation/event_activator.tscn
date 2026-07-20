@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://umo75u54c3en"]
+
+[ext_resource type="Script" uid="uid://c7jh405n0dxj0" path="res://Activation/EventActivator.gd" id="1_fajft"]
+
+[node name="EventActivator" type="Node" unique_id=1249467135]
+script = ExtResource("1_fajft")

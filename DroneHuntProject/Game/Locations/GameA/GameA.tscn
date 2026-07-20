@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b3bfavw0aukt4"]
+
+[ext_resource type="Texture2D" uid="uid://bexgfaoelbo6r" path="res://Art/Backgrounds/Beach_BG_ChatGPT.png" id="1_cq3ef"]
+[ext_resource type="Script" uid="uid://3fva2g5hmpep" path="res://Effects/Camera/Camera2DController.gd" id="2_c53hj"]
+[ext_resource type="PackedScene" uid="uid://bxug866qtdnfb" path="res://Combat/Gun/GunManager.tscn" id="3_ox8nt"]
+[ext_resource type="PackedScene" uid="uid://c5u4g4854n4tm" path="res://Drones/Drone/Drone.tscn" id="4_n2yyw"]
+
+[node name="Game" type="Node2D" unique_id=1392666010]
+
+[node name="Background" type="Node2D" parent="." unique_id=1685654612]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1521156582]
+position = Vector2(-696.00006, -296.99994)
+scale = Vector2(1.7810842, 1.7810841)
+texture = ExtResource("1_cq3ef")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1965277682]
+anchor_mode = 0
+script = ExtResource("2_c53hj")
+min_x = -800.0
+max_x = 800.0
+
+[node name="GunManager" parent="." unique_id=1169279648 instance=ExtResource("3_ox8nt")]
+position = Vector2(856, 524)
+
+[node name="Drone" parent="." unique_id=891162022 instance=ExtResource("4_n2yyw")]
+position = Vector2(788, 603)
+activation_time = 0.1
+
+[node name="FlyToMarker" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../Marker2D")
+
+[node name="RandomWanderBehavior" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="1" unique_id=253137632]
+minimum_idle_time = 1.0
+maximum_idle_time = 5.0
+keep_inside_screen = false
+random_seed = 9
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1541736390]
+position = Vector2(1331, 262)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=893699978]
+position = Vector2(755, 492)
+
+[editable path="Drone"]

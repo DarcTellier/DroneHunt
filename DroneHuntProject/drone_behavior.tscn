@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://3clrg8vu6ddb"]
-
-[ext_resource type="Script" uid="uid://mebq7bg88ug1" path="res://DroneBehavior.gd" id="1_u12gu"]
-
-[node name="DroneBehavior" type="Node" unique_id=495395626]
-script = ExtResource("1_u12gu")

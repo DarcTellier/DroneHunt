@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cnv1opkf4o677"]
-
-[ext_resource type="Script" uid="uid://c662v40nukqy4" path="res://Behavior/DroneBehavior/BehaviorScripts/CircleBehavior.gd" id="1_llacg"]
-
-[node name="CircleBehavior" type="Node" unique_id=1480469823]
-script = ExtResource("1_llacg")

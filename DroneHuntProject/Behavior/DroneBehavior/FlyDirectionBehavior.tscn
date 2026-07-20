@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://7bwaso5d2dti"]
-
-[ext_resource type="Script" uid="uid://dawajgnay2crs" path="res://Behavior/DroneBehavior/BehaviorScripts/FlyDirectionBehavior.gd" id="1_1ctog"]
-
-[node name="FlyDirectionBehavior" type="Node" unique_id=1341184769]
-script = ExtResource("1_1ctog")

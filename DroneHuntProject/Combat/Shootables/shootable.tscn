@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b3ex6c7t7i5cu"]
+
+[ext_resource type="Script" uid="uid://nkfuomnj31mn" path="res://Combat/Shootables/shootable.gd" id="1_lp66e"]
+
+[node name="Shootable" type="Node" unique_id=102788206]
+script = ExtResource("1_lp66e")

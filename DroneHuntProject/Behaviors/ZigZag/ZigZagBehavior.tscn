@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cvop4vdeogrpj"]
+
+[ext_resource type="Script" uid="uid://dn8psbfi1t6ka" path="res://Behaviors/ZigZag/ZigZagBehavior.gd" id="1_bd0e6"]
+
+[node name="ZigZagBehavior" type="Node" unique_id=859902181]
+script = ExtResource("1_bd0e6")

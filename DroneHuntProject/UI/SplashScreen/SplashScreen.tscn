@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bmaln5q3lb2mw"]
+
+[ext_resource type="Script" uid="uid://ddrswce4mtak2" path="res://UI/SplashScreen/SplashScreen.gd" id="1_8lrbv"]
+[ext_resource type="Texture2D" uid="uid://dd2p5kgx0kx47" path="res://Art/Branding/Splash.png" id="1_xe5an"]
+
+[node name="SplashScreen" type="Control" unique_id=1649520724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8lrbv")
+main_menu_scene_path = "uid://b6032gq3nknsf"
+
+[node name="BG" type="ColorRect" parent="." unique_id=1725349024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="TextureRect" parent="." unique_id=465514740]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xe5an")
+
+[node name="Timer" type="Timer" parent="." unique_id=242353485]
+one_shot = true
