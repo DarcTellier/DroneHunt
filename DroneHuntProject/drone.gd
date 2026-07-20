@@ -2,6 +2,11 @@ class_name Drone
 extends Shootable
 
 
+const FloatingDamageScene = preload(
+	"res://Effects/FloatingDamage.tscn"
+)
+
+
 @export_category("Drone Score")
 
 @export_range(0, 100000, 10)
@@ -15,6 +20,11 @@ var activation_time: float = 0.0
 
 @export var required_event: WorldEvents.GlobalEvent = \
 	WorldEvents.GlobalEvent.NONE
+
+
+@export_category("Combat Feedback")
+
+@export var floating_text_offset: Vector2 = Vector2(0, -30)
 
 
 @onready var event_activator: EventActivator = \
@@ -35,7 +45,6 @@ var activation_time: float = 0.0
 
 var drone_is_active: bool = false
 var score_was_awarded: bool = false
-
 var maximum_health: float = 1.0
 
 
@@ -120,13 +129,40 @@ func _on_event_activated() -> void:
 
 
 func _on_hit_received(
-	_damage: float,
+	damage: float,
 	_hit_position: Vector2,
 	_remaining_penetration: float
 ) -> void:
+
 	health_bar.set_health(
 		health,
 		maximum_health
+	)
+
+	spawn_floating_text(
+		str(int(round(damage))),
+		Color.WHITE
+	)
+
+
+func spawn_floating_text(
+	text: String,
+	color: Color = Color.WHITE
+) -> void:
+
+	var popup: FloatingDamage = \
+		FloatingDamageScene.instantiate()
+
+	get_tree().current_scene.add_child(
+		popup
+	)
+
+	popup.global_position = \
+		global_position + floating_text_offset
+
+	popup.show_text(
+		text,
+		color
 	)
 
 
