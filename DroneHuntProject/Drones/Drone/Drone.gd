@@ -4,7 +4,10 @@ extends Shootable
 
 const FLOATING_DAMAGE_SCENE: PackedScene = preload(
 	"res://Effects/FloatingDamage/FloatingDamage.tscn"
-	
+)
+
+const DRONE_EXPLOSION_SCENE: PackedScene = preload(
+	"res://Effects/Explosion/DroneExplosion.tscn"
 )
 
 
@@ -22,10 +25,17 @@ var activation_time: float = 0.0
 @export var required_event: WorldEvents.GlobalEvent = \
 	WorldEvents.GlobalEvent.NONE
 
+@export var auto_start_activation: bool = true
+
 
 @export_category("Combat Feedback")
 
 @export var floating_text_offset: Vector2 = Vector2(0, -30)
+
+
+@export_category("Destruction")
+
+@export var explosion_offset: Vector2 = Vector2.ZERO
 
 
 @onready var event_activator: EventActivator = \
@@ -52,16 +62,23 @@ var maximum_health: float = 1.0
 func _ready() -> void:
 	maximum_health = health
 
+	add_to_group("drones")
+
 	_configure_activation()
 	_connect_signals()
 	_update_health_bar()
-	health_bar.hide_immediately()
 
+	health_bar.hide_immediately()
 	_set_drone_active(false)
+
+	
 
 
 func start_activation_timer() -> void:
 	if drone_is_active:
+		return
+
+	if is_destroyed:
 		return
 
 	event_activator.start_timer()
@@ -84,6 +101,9 @@ func reset_drone() -> void:
 
 	_set_drone_active(false)
 
+	if auto_start_activation:
+		start_activation_timer.call_deferred()
+
 
 func _configure_activation() -> void:
 	event_activator.configure(
@@ -91,17 +111,28 @@ func _configure_activation() -> void:
 		required_event
 	)
 
-	event_activator.activated.connect(
+	if not event_activator.activated.is_connected(
 		_on_event_activated
-	)
+	):
+		event_activator.activated.connect(
+			_on_event_activated
+		)
 
 
 func _connect_signals() -> void:
-	if not destroyed.is_connected(_on_destroyed):
-		destroyed.connect(_on_destroyed)
+	if not destroyed.is_connected(
+		_on_destroyed
+	):
+		destroyed.connect(
+			_on_destroyed
+		)
 
-	if not hit_received.is_connected(_on_hit_received):
-		hit_received.connect(_on_hit_received)
+	if not hit_received.is_connected(
+		_on_hit_received
+	):
+		hit_received.connect(
+			_on_hit_received
+		)
 
 
 func _set_drone_active(active: bool) -> void:
@@ -122,6 +153,12 @@ func _set_drone_active(active: bool) -> void:
 
 
 func _on_event_activated() -> void:
+	if is_destroyed:
+		return
+
+	if drone_is_active:
+		return
+
 	_set_drone_active(true)
 	behavior_controller.start(self)
 
@@ -131,6 +168,9 @@ func _on_hit_received(
 	hit_position: Vector2,
 	_remaining_penetration: float
 ) -> void:
+	if is_destroyed:
+		return
+
 	_update_health_bar()
 
 	spawn_floating_text(
@@ -138,8 +178,10 @@ func _on_hit_received(
 		Color.WHITE
 	)
 
-	var screen_hit_position: Vector2 = \
-		get_viewport().get_canvas_transform() * hit_position
+	var screen_hit_position: Vector2 = (
+		get_viewport().get_canvas_transform()
+		* hit_position
+	)
 
 	CameraEffects.hit_marker(
 		screen_hit_position
@@ -163,8 +205,10 @@ func spawn_floating_text(
 		popup
 	)
 
-	popup.global_position = \
-		global_position + floating_text_offset
+	popup.global_position = (
+		global_position
+		+ floating_text_offset
+	)
 
 	popup.show_text(
 		text,
@@ -179,13 +223,38 @@ func _update_health_bar() -> void:
 	)
 
 
+func _spawn_explosion() -> void:
+	var explosion := DRONE_EXPLOSION_SCENE.instantiate() \
+		as Node2D
+
+	if explosion == null:
+		push_warning(
+			"Drone could not instantiate DroneExplosion."
+		)
+		return
+
+	get_tree().current_scene.add_child(
+		explosion
+	)
+
+	explosion.global_position = (
+		global_position
+		+ explosion_offset
+	)
+
+
 func _on_destroyed() -> void:
 	if score_was_awarded:
 		return
 
 	score_was_awarded = true
 
+	behavior_controller.stop()
+	event_activator.pause_timer()
 	health_bar.hide_immediately()
+
+	_spawn_explosion()
+	_set_drone_active(false)
 
 	ScoreManager.add_score(
 		score_value

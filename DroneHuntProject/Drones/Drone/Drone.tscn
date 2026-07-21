@@ -11,16 +11,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
 size = Vector2(215, 75)
 
-[node name="Drone" type="Area2D" unique_id=891162022]
+[node name="Drone" type="Area2D" unique_id=891162022 groups=["gameplay"]]
+process_mode = 1
 collision_mask = 0
 script = ExtResource("1_6wrdy")
-score_value = null
 activation_time = 5.0
-required_event = null
-floating_text_offset = null
-penetration_cost = null
-health = null
-delete_when_destroyed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=654114003]
 scale = Vector2(0.15, 0.15)

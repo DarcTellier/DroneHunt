@@ -21,6 +21,7 @@ Quit="*uid://62x0q2iw2k6o"
 GameSession="*uid://xgpcpjho5dlr"
 WorldEvents="*uid://dwgxi2porgg3r"
 ScoreManager="*uid://kmmqyq488jsh"
+GameStateManager="*uid://b7x68fe4bd7n6"
 
 [display]
 
@@ -29,6 +30,8 @@ window/size/viewport_height=1080
 window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://rohff8tlfve3"
+mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [input]
 

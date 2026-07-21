@@ -18,6 +18,11 @@ extends Node2D
 @export_flags_2d_physics var bullet_collision_mask: int = 1
 
 
+@export_category("Camera Feedback")
+
+@export var firing_feedback_profile: CameraFeedbackProfile
+
+
 @export_category("Debug")
 
 @export var print_shot_results: bool = true
@@ -33,8 +38,7 @@ func fire_at_mouse() -> void:
 
 	GameSession.record_shot()
 
-	CameraEffects.screen_flash()
-	CameraEffects.shake()
+	_play_firing_feedback()
 
 	if print_shot_results:
 		print("")
@@ -46,6 +50,16 @@ func fire_at_mouse() -> void:
 
 	if shot_hit_something:
 		GameSession.record_hit()
+
+
+func _play_firing_feedback() -> void:
+	if firing_feedback_profile == null:
+		return
+
+	CameraEffects.play_feedback(
+		firing_feedback_profile
+	)
+
 
 func fire_hitscan(
 	target_position: Vector2
@@ -128,7 +142,7 @@ func fire_hitscan(
 		if penetration_power > 0.0:
 			damage_ratio = clampf(
 				penetration_before_hit
-				/ penetration_power,
+					/ penetration_power,
 				0.0,
 				1.0
 			)

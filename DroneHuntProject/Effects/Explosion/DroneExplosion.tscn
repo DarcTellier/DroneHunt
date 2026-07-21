@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bqgm257ewng4e"]
+
+[ext_resource type="Shader" uid="uid://5hwtaoy2p4eq" path="res://Effects/Explosion/ExplosionShader.gdshader" id="1_4ebfe"]
+[ext_resource type="Script" uid="uid://cmibxul8w1mpx" path="res://Effects/Explosion/DroneExplosion.gd" id="1_5wpgq"]
+[ext_resource type="Resource" uid="uid://c8bbx3nldqty2" path="res://Effects/Profile/ExplosionFeedback.tres" id="2_d6llt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ebfe"]
+shader = ExtResource("1_4ebfe")
+shader_parameter/boom_pal1 = Color(0.2, 0.15, 0.3, 1)
+shader_parameter/boom_pal2 = Color(0.9, 0.15, 0.05, 1)
+shader_parameter/boom_pal3 = Color(0.9, 0.5, 0.1, 1)
+shader_parameter/boom_pal4 = Color(0.95, 0.95, 0.35, 1)
+shader_parameter/smoke_pal1 = Color(0.2, 0.15, 0.3, 1)
+shader_parameter/smoke_pal2 = Color(0.35, 0.3, 0.45, 1)
+shader_parameter/smoke_pal3 = Color(0.5, 0.45, 0.6, 1)
+shader_parameter/progress = 0.0
+shader_parameter/size = 5.0
+shader_parameter/disperse = 1.0
+shader_parameter/boom_shape = 12.0
+shader_parameter/boom_distortion = 0.5
+shader_parameter/boom_bubbles = 0.5
+shader_parameter/boom_bw = 0.5
+shader_parameter/smoke_shape = 16.0
+shader_parameter/smoke_distortion = 1.5
+shader_parameter/smoke_bubbles = 0.5
+shader_parameter/smoke_bw = 0.75
+shader_parameter/displacement = Vector2(0, 0)
+shader_parameter/edge_softness = 0.025
+
+[sub_resource type="QuadMesh" id="QuadMesh_ra2i3"]
+
+[node name="DroneExplosion" type="Node2D" unique_id=581614858]
+script = ExtResource("1_5wpgq")
+feedback_profile = ExtResource("2_d6llt")
+
+[node name="ExplosionVisual" type="MeshInstance2D" parent="." unique_id=1940256608]
+material = SubResource("ShaderMaterial_4ebfe")
+scale = Vector2(256, 256)
+mesh = SubResource("QuadMesh_ra2i3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=945296805]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=54335672]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2124842049]

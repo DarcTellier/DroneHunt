@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CameraFeedbackProfile" format=3 uid="uid://cxrahyh2okybk"]
+
+[ext_resource type="Script" uid="uid://04onpuf2qavg" path="res://Effects/Camera/camera_feedback_profile.gd" id="1_eow6a"]
+
+[resource]
+script = ExtResource("1_eow6a")
+flash_enabled = false
+flash_strength = 0.85
+flash_duration = 0.12
+shake_enabled = false
+shake_strength = 12.0
+shake_duration = 0.4
+metadata/_custom_type_script = "uid://04onpuf2qavg"

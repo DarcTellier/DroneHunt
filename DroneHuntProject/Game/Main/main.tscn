@@ -5,20 +5,25 @@
 [ext_resource type="Texture2D" uid="uid://bexgfaoelbo6r" path="res://Art/Backgrounds/Beach_BG_ChatGPT.png" id="3_1r4f6"]
 [ext_resource type="Script" uid="uid://3fva2g5hmpep" path="res://Effects/Camera/Camera2DController.gd" id="4_vp847"]
 [ext_resource type="PackedScene" uid="uid://b7yt4y70h4p2e" path="res://Effects/Camera/CameraEffects.tscn" id="5_xpbyc"]
+[ext_resource type="Resource" uid="uid://cxrahyh2okybk" path="res://Effects/Profile/CameraFeedbackProfile.tres" id="6_bhrp5"]
 [ext_resource type="Texture2D" uid="uid://u15sj4ela27b" path="res://Art/UI/HitMarker_128.svg" id="6_w0u7a"]
 [ext_resource type="PackedScene" uid="uid://bxug866qtdnfb" path="res://Combat/Gun/GunManager.tscn" id="7_fsdd5"]
 [ext_resource type="PackedScene" uid="uid://c5u4g4854n4tm" path="res://Drones/Drone/Drone.tscn" id="8_ry1jc"]
+[ext_resource type="Resource" uid="uid://d38exb3b6gsn7" path="res://Effects/Profile/DefaultGunFeedback.tres" id="9_1r4f6"]
 [ext_resource type="PackedScene" uid="uid://xulv0vwrxci5" path="res://UI/HUD/CanvasLayer.tscn" id="9_uqsqp"]
 [ext_resource type="Script" uid="uid://debu26j7dvvny" path="res://UI/HUD/ScoreLabel.gd" id="10_u8y8r"]
+[ext_resource type="PackedScene" uid="uid://dphm6rugw4vog" path="res://Effects/Transition/Transitions.tscn" id="13_vp847"]
 
 [node name="Main" type="Node2D" unique_id=1392666010]
 script = ExtResource("1_oab63")
 game_over_scene_path = "uid://2dxbd84pk0jd"
+metadata/_edit_vertical_guides_ = [-695.0, 2278.0]
 
-[node name="RoundController" parent="." unique_id=803465436 node_paths=PackedStringArray("countdown_label", "timer_label") instance=ExtResource("2_bhrp5")]
-round_duration = 1.0
+[node name="RoundController" parent="." unique_id=803465436 node_paths=PackedStringArray("countdown_label", "timer_label", "transition_controller") instance=ExtResource("2_bhrp5")]
+round_duration = 15.0
 countdown_label = NodePath("../CanvasLayer/HUD/CountdownLabel")
 timer_label = NodePath("../CanvasLayer/HUD/TimerLabel")
+transition_controller = NodePath("../Transitions")
 
 [node name="Background" type="Node2D" parent="." unique_id=1685654612]
 
@@ -31,10 +36,11 @@ centered = false
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1965277682]
 anchor_mode = 0
 script = ExtResource("4_vp847")
-min_x = -800.0
-max_x = 800.0
+min_x = -695.0
+max_x = 360.0
 
 [node name="CameraEffects" parent="." unique_id=1842931647 instance=ExtResource("5_xpbyc")]
+default_feedback_profile = ExtResource("6_bhrp5")
 
 [node name="CameraShakeController" parent="CameraEffects" index="1" unique_id=1559104345 node_paths=PackedStringArray("gameplay_camera")]
 gameplay_camera = NodePath("../../Camera2D")
@@ -47,25 +53,44 @@ texture = null
 
 [node name="GunManager" parent="." unique_id=1169279648 instance=ExtResource("7_fsdd5")]
 position = Vector2(856, 524)
+firing_feedback_profile = ExtResource("9_1r4f6")
 
 [node name="Drone" parent="." unique_id=891162022 instance=ExtResource("8_ry1jc")]
 position = Vector2(788, 603)
-score_value = 100
 activation_time = 3.0
-required_event = 0
-floating_text_offset = Vector2(0, -30)
-penetration_cost = 1.0
 health = 100.0
-delete_when_destroyed = true
-
-[node name="EventActivator" parent="Drone" index="3" unique_id=1249467135]
-required_event = null
-activate_only_once = null
 
 [node name="FlyToMarker" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../DroneStartMarker")
 
 [node name="RandomWanderBehavior" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="1" unique_id=253137632]
+minimum_idle_time = 1.0
+maximum_idle_time = 5.0
+keep_inside_screen = false
+random_seed = 9
+
+[node name="Drone2" parent="." unique_id=16834523 instance=ExtResource("8_ry1jc")]
+position = Vector2(1081, 603)
+health = 100.0
+
+[node name="FlyToMarker" parent="Drone2/BehaviorController" parent_id_path=PackedInt32Array(16834523, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../DroneStartMarker")
+
+[node name="RandomWanderBehavior" parent="Drone2/BehaviorController" parent_id_path=PackedInt32Array(16834523, 334432352) index="1" unique_id=253137632]
+minimum_idle_time = 1.0
+maximum_idle_time = 5.0
+keep_inside_screen = false
+random_seed = 9
+
+[node name="Drone3" parent="." unique_id=222059649 instance=ExtResource("8_ry1jc")]
+position = Vector2(538, 603)
+activation_time = 0.1
+health = 100.0
+
+[node name="FlyToMarker" parent="Drone3/BehaviorController" parent_id_path=PackedInt32Array(222059649, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../DroneStartMarker")
+
+[node name="RandomWanderBehavior" parent="Drone3/BehaviorController" parent_id_path=PackedInt32Array(222059649, 334432352) index="1" unique_id=253137632]
 minimum_idle_time = 1.0
 maximum_idle_time = 5.0
 keep_inside_screen = false
@@ -81,10 +106,23 @@ position = Vector2(755, 492)
 
 [node name="HUD" parent="CanvasLayer" index="0" unique_id=1065350124]
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="ScoreLabel" parent="CanvasLayer/HUD" index="0" unique_id=307194546]
 script = ExtResource("10_u8y8r")
+metadata/_edit_lock_ = true
+
+[node name="TimerLabel" parent="CanvasLayer/HUD" index="1" unique_id=570421941]
+metadata/_edit_lock_ = true
+
+[node name="CountdownLabel" parent="CanvasLayer/HUD" index="2" unique_id=412725577]
+metadata/_edit_lock_ = true
+
+[node name="Transitions" parent="." unique_id=289134373 instance=ExtResource("13_vp847")]
+start_fully_covered = true
 
 [editable path="CameraEffects"]
 [editable path="Drone"]
+[editable path="Drone2"]
+[editable path="Drone3"]
 [editable path="CanvasLayer"]

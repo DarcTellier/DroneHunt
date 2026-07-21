@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://2dxbd84pk0jd"]
 
 [ext_resource type="Script" uid="uid://blovsneppytki" path="res://UI/GameOver/GameOver.gd" id="1_40baj"]
+[ext_resource type="PackedScene" uid="uid://dphm6rugw4vog" path="res://Effects/Transition/Transitions.tscn" id="2_d8mmn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4gaj"]
 font_size = 100
@@ -13,7 +14,7 @@ font_size = 42
 [sub_resource type="LabelSettings" id="LabelSettings_4g1ep"]
 font_size = 42
 
-[node name="GameOver" type="Control" unique_id=504636733]
+[node name="GameOver" type="Control" unique_id=504636733 node_paths=PackedStringArray("transition_controller")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,14 +27,18 @@ game_a_scene_path = "uid://df0n1rdjhq435"
 game_b_scene_path = "uid://df0n1rdjhq435"
 game_c_scene_path = "uid://df0n1rdjhq435"
 main_menu_scene_path = "uid://hvxje3pcp0ia"
+transition_controller = NodePath("Transitions")
 metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Background" type="ColorRect" parent="." unique_id=1989717957]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="ResultsPanel" type="Panel" parent="." unique_id=626408106]
 self_modulate = Color(1, 1, 1, 0.59607846)
@@ -155,3 +160,17 @@ offset_right = 467.0
 offset_bottom = 955.0
 text = "▶"
 label_settings = SubResource("LabelSettings_4g1ep")
+
+[node name="BlackOverlay" type="ColorRect" parent="." unique_id=1399090985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Transitions" parent="." unique_id=289134373 instance=ExtResource("2_d8mmn")]
+transition_mode = 2
+start_fully_covered = true

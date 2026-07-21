@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CameraFeedbackProfile" format=3 uid="uid://c8bbx3nldqty2"]
+
+[ext_resource type="Script" uid="uid://04onpuf2qavg" path="res://Effects/Camera/camera_feedback_profile.gd" id="1_xpion"]
+
+[resource]
+script = ExtResource("1_xpion")
+metadata/_custom_type_script = "uid://04onpuf2qavg"

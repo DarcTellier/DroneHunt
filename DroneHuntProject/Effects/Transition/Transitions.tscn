@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dphm6rugw4vog"]
+
+[ext_resource type="Script" uid="uid://dr2y47qcmehs2" path="res://Effects/Transition/Transition.gd" id="1_5paur"]
+[ext_resource type="Shader" uid="uid://wwq0e3raa14k" path="res://Effects/Transition/DotTransition.gdshader" id="1_hig8h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra2i3"]
+shader = ExtResource("1_hig8h")
+shader_parameter/spacing = 23.0
+shader_parameter/animation_progress = 0.0
+shader_parameter/dot_size = 0.999999977648
+shader_parameter/dot_color = Color(0, 0, 0, 1)
+shader_parameter/direction_degrees = 0.0
+shader_parameter/transition_softness = 0.9999999776480001
+
+[node name="Transitions" type="CanvasLayer" unique_id=289134373 node_paths=PackedStringArray("transition_rect")]
+process_mode = 3
+layer = 101
+script = ExtResource("1_5paur")
+transition_rect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=76732831]
+material = SubResource("ShaderMaterial_ra2i3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

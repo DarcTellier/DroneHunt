@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://23pm0xwr65v7" path="res://UI/MainMenu/MainMenu.gd" id="1_3gv5x"]
 [ext_resource type="Texture2D" uid="uid://dofy42unjub8x" path="res://Art/Backgrounds/DroneHuntLogo2.png" id="1_hsak0"]
+[ext_resource type="PackedScene" uid="uid://dphm6rugw4vog" path="res://Effects/Transition/Transitions.tscn" id="3_8x0bb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
 font_size = 42
@@ -81,3 +82,5 @@ offset_right = 677.0
 offset_bottom = 667.0
 text = "▶"
 label_settings = SubResource("LabelSettings_ra2i3")
+
+[node name="Transitions" parent="." unique_id=289134373 instance=ExtResource("3_8x0bb")]
