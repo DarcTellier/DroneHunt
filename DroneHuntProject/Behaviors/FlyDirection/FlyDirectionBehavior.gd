@@ -6,7 +6,7 @@ extends DroneBehavior
 
 @export var direction: Vector2 = Vector2.RIGHT
 
-@export_range(0.0, 5000.0, 1.0, "suffix:px")
+@export_range(0.0, 50000.0, 1.0, "suffix:px")
 var distance: float = 400.0
 
 @export_range(1.0, 2000.0, 1.0, "suffix:px/s")

@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_rurtl")
-flash_enabled = false
-flash_strength = 1.0
-shake_enabled = false
+flash_strength = 0.24
+flash_duration = 0.14
+shake_strength = 1.0
+shake_duration = 0.37
 metadata/_custom_type_script = "uid://04onpuf2qavg"

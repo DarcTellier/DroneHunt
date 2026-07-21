@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://umo75u54c3en" path="res://Activation/event_activator.tscn" id="4_8pjkb"]
 [ext_resource type="PackedScene" uid="uid://bifjr3v402m01" path="res://Behaviors/Core/behavior_controller.tscn" id="5_xjdaj"]
 [ext_resource type="PackedScene" uid="uid://dbjkqps1uqg15" path="res://Behaviors/FlyToMarker/FlyToMarker.tscn" id="6_uptfk"]
-[ext_resource type="PackedScene" uid="uid://bnd6an3p70kat" path="res://Behaviors/RandomWander/RandomWanderBehavior.tscn" id="7_oe2hs"]
+[ext_resource type="PackedScene" uid="uid://cnv1opkf4o677" path="res://Behaviors/Circle/CircleBehavior.tscn" id="7_nwcrl"]
+[ext_resource type="PackedScene" uid="uid://b55k1ki2w42l5" path="res://Behaviors/Dive/DiveBehavior.tscn" id="8_eoqsw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
 size = Vector2(215, 75)
@@ -15,7 +16,10 @@ size = Vector2(215, 75)
 process_mode = 1
 collision_mask = 0
 script = ExtResource("1_6wrdy")
+score_value = 500
 activation_time = 5.0
+penetration_cost = 10.0
+health = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=654114003]
 scale = Vector2(0.15, 0.15)
@@ -37,4 +41,8 @@ activation_time = 0.1
 
 [node name="FlyToMarker" parent="BehaviorController" unique_id=335442041 instance=ExtResource("6_uptfk")]
 
-[node name="RandomWanderBehavior" parent="BehaviorController" unique_id=253137632 instance=ExtResource("7_oe2hs")]
+[node name="CircleBehavior" parent="BehaviorController" unique_id=1480469823 instance=ExtResource("7_nwcrl")]
+duration = 45.0
+
+[node name="DiveBehavior" parent="BehaviorController" unique_id=1105087076 instance=ExtResource("8_eoqsw")]
+dive_offset = Vector2(0, 1000)

@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_xpion")
+flash_strength = 1.0
+flash_duration = 0.28
+shake_strength = 16.8
+shake_duration = 0.06999999999999999
 metadata/_custom_type_script = "uid://04onpuf2qavg"

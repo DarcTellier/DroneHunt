@@ -1,0 +1,67 @@
+Drone Hunt - Homing Missile Design Notes
+
+Core Gameplay Loop
+
+-   Select Missile weapon.
+-   Hold Right Mouse Button over a drone.
+-   Lock meter fills while aiming at the same drone.
+-   Lock acquired.
+-   Press Left Mouse Button to fire.
+-   Homing missile launches.
+-   Drone stops its current behavior.
+-   Drone attempts to evade.
+-   Missile homes toward the target.
+-   Missile either hits or misses.
+
+Lock-On
+
+-   Weapon type: MISSILE
+-   Hold RMB to lock.
+-   Cursor must stay on the same drone.
+-   Lock time about 0.8 seconds.
+-   Moving away resets or drains lock.
+-   Store the locked drone until fired or lock is broken.
+
+Suggested feedback: beep… beep… beep… BEEEEEP (LOCKED)
+
+Homing Missile
+
+Scene: - Sprite2D - CollisionShape2D - GPUParticles2D -
+VisibleOnScreenNotifier2D
+
+Behavior: - Starts large near the camera. - Shrinks to the drone’s
+apparent size while travelling. - Accelerates. - Turns smoothly like
+Mega Man X homing missiles. - Explodes on impact. - Self-destructs if
+the target is destroyed.
+
+Drone Evasion
+
+Drone receives: begin_missile_evasion(missile)
+
+BehaviorController pauses normal behavior and performs evasive
+maneuvers.
+
+Future evade behaviors: - Break Left - Break Right - Corkscrew - Dive -
+Climb - Juke - Hide Behind Cover - Last-second dodge
+
+First implementation: - Random break left/right - Brief pause - Reverse
+direction
+
+Resume normal behavior after the missile expires or misses.
+
+Scripts
+
+Modify: - GunManager.gd - Drone.gd - BehaviorController.gd
+
+Create: - HomingMissile.gd - HomingMissile.tscn
+
+Design Goals
+
+-   Missiles should not guarantee a hit.
+-   Skilled drones should sometimes evade successfully.
+-   Normal gun remains useful.
+-   Locking should feel satisfying.
+-   Missile should visually shrink toward the target.
+-   Drone evasion should look cinematic.
+
+Planned for a future Drone Hunt update.

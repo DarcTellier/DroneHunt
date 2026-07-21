@@ -12,7 +12,11 @@
 [ext_resource type="Resource" uid="uid://d38exb3b6gsn7" path="res://Effects/Profile/DefaultGunFeedback.tres" id="9_1r4f6"]
 [ext_resource type="PackedScene" uid="uid://xulv0vwrxci5" path="res://UI/HUD/CanvasLayer.tscn" id="9_uqsqp"]
 [ext_resource type="Script" uid="uid://debu26j7dvvny" path="res://UI/HUD/ScoreLabel.gd" id="10_u8y8r"]
+[ext_resource type="PackedScene" uid="uid://bkhmivxbgwwv1" path="res://Drones/Drone/ScoutDrone.tscn" id="10_xpbyc"]
 [ext_resource type="PackedScene" uid="uid://dphm6rugw4vog" path="res://Effects/Transition/Transitions.tscn" id="13_vp847"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
+size = Vector2(215, 75)
 
 [node name="Main" type="Node2D" unique_id=1392666010]
 script = ExtResource("1_oab63")
@@ -20,18 +24,19 @@ game_over_scene_path = "uid://2dxbd84pk0jd"
 metadata/_edit_vertical_guides_ = [-695.0, 2278.0]
 
 [node name="RoundController" parent="." unique_id=803465436 node_paths=PackedStringArray("countdown_label", "timer_label", "transition_controller") instance=ExtResource("2_bhrp5")]
-round_duration = 15.0
 countdown_label = NodePath("../CanvasLayer/HUD/CountdownLabel")
 timer_label = NodePath("../CanvasLayer/HUD/TimerLabel")
 transition_controller = NodePath("../Transitions")
 
 [node name="Background" type="Node2D" parent="." unique_id=1685654612]
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1521156582]
 position = Vector2(-696.00006, -296.99994)
 scale = Vector2(1.7810842, 1.7810841)
 texture = ExtResource("3_1r4f6")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1965277682]
 anchor_mode = 0
@@ -55,46 +60,2010 @@ texture = null
 position = Vector2(856, 524)
 firing_feedback_profile = ExtResource("9_1r4f6")
 
-[node name="Drone" parent="." unique_id=891162022 instance=ExtResource("8_ry1jc")]
-position = Vector2(788, 603)
+[node name="Targets" type="Node2D" parent="." unique_id=775028377]
+
+[node name="ScoutDrone" parent="Targets" unique_id=891162022 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
 activation_time = 3.0
-health = 100.0
 
-[node name="FlyToMarker" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
-target_marker = NodePath("../../../DroneStartMarker")
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
 
-[node name="RandomWanderBehavior" parent="Drone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="1" unique_id=253137632]
-minimum_idle_time = 1.0
-maximum_idle_time = 5.0
-keep_inside_screen = false
-random_seed = 9
+[node name="ScoutDrone2" parent="Targets" unique_id=838739886 instance=ExtResource("10_xpbyc")]
+position = Vector2(2523, 753)
+activation_time = 2.0
 
-[node name="Drone2" parent="." unique_id=16834523 instance=ExtResource("8_ry1jc")]
-position = Vector2(1081, 603)
-health = 100.0
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone2/BehaviorController" parent_id_path=PackedInt32Array(838739886, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
 
-[node name="FlyToMarker" parent="Drone2/BehaviorController" parent_id_path=PackedInt32Array(16834523, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
-target_marker = NodePath("../../../DroneStartMarker")
+[node name="ScoutDrone3" parent="Targets" unique_id=1218823680 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
 
-[node name="RandomWanderBehavior" parent="Drone2/BehaviorController" parent_id_path=PackedInt32Array(16834523, 334432352) index="1" unique_id=253137632]
-minimum_idle_time = 1.0
-maximum_idle_time = 5.0
-keep_inside_screen = false
-random_seed = 9
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone3/BehaviorController" parent_id_path=PackedInt32Array(1218823680, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
 
-[node name="Drone3" parent="." unique_id=222059649 instance=ExtResource("8_ry1jc")]
-position = Vector2(538, 603)
+[node name="ScoutDrone4" parent="Targets" unique_id=44487446 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone4/BehaviorController" parent_id_path=PackedInt32Array(44487446, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone5" parent="Targets" unique_id=1438950575 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone5/BehaviorController" parent_id_path=PackedInt32Array(1438950575, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone6" parent="Targets" unique_id=1153296087 instance=ExtResource("10_xpbyc")]
+position = Vector2(2750, 253)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone6/BehaviorController" parent_id_path=PackedInt32Array(1153296087, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone7" parent="Targets" unique_id=1590743914 instance=ExtResource("10_xpbyc")]
+position = Vector2(2786, 484)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone7/BehaviorController" parent_id_path=PackedInt32Array(1590743914, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone8" parent="Targets" unique_id=76216022 instance=ExtResource("10_xpbyc")]
+position = Vector2(2478, 126)
 activation_time = 0.1
-health = 100.0
 
-[node name="FlyToMarker" parent="Drone3/BehaviorController" parent_id_path=PackedInt32Array(222059649, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
-target_marker = NodePath("../../../DroneStartMarker")
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone8/BehaviorController" parent_id_path=PackedInt32Array(76216022, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
 
-[node name="RandomWanderBehavior" parent="Drone3/BehaviorController" parent_id_path=PackedInt32Array(222059649, 334432352) index="1" unique_id=253137632]
-minimum_idle_time = 1.0
-maximum_idle_time = 5.0
-keep_inside_screen = false
-random_seed = 9
+[node name="ScoutDrone9" parent="Targets" unique_id=1726417680 instance=ExtResource("10_xpbyc")]
+position = Vector2(2507, 541)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone9/BehaviorController" parent_id_path=PackedInt32Array(1726417680, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone10" parent="Targets" unique_id=1658550937 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone10/BehaviorController" parent_id_path=PackedInt32Array(1658550937, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone11" parent="Targets" unique_id=1470016843 instance=ExtResource("10_xpbyc")]
+position = Vector2(3202, 839)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone11/BehaviorController" parent_id_path=PackedInt32Array(1470016843, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone12" parent="Targets" unique_id=417277252 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone12/BehaviorController" parent_id_path=PackedInt32Array(417277252, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone13" parent="Targets" unique_id=1036290124 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone13/BehaviorController" parent_id_path=PackedInt32Array(1036290124, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone14" parent="Targets" unique_id=2105525480 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone14/BehaviorController" parent_id_path=PackedInt32Array(2105525480, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone15" parent="Targets" unique_id=1067695780 instance=ExtResource("10_xpbyc")]
+position = Vector2(3429, 339)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone15/BehaviorController" parent_id_path=PackedInt32Array(1067695780, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone16" parent="Targets" unique_id=1494204713 instance=ExtResource("10_xpbyc")]
+position = Vector2(3465, 570)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone16/BehaviorController" parent_id_path=PackedInt32Array(1494204713, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone17" parent="Targets" unique_id=1205658025 instance=ExtResource("10_xpbyc")]
+position = Vector2(3157, 212)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone17/BehaviorController" parent_id_path=PackedInt32Array(1205658025, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone18" parent="Targets" unique_id=1759531951 instance=ExtResource("10_xpbyc")]
+position = Vector2(3186, 627)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone18/BehaviorController" parent_id_path=PackedInt32Array(1759531951, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone19" parent="Targets" unique_id=1088306674 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone19/BehaviorController" parent_id_path=PackedInt32Array(1088306674, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone20" parent="Targets" unique_id=1283782935 instance=ExtResource("10_xpbyc")]
+position = Vector2(2523, 753)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone20/BehaviorController" parent_id_path=PackedInt32Array(1283782935, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone21" parent="Targets" unique_id=406942365 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone21/BehaviorController" parent_id_path=PackedInt32Array(406942365, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone22" parent="Targets" unique_id=265117575 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone22/BehaviorController" parent_id_path=PackedInt32Array(265117575, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone23" parent="Targets" unique_id=1636015001 instance=ExtResource("10_xpbyc")]
+position = Vector2(2487, 364)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone23/BehaviorController" parent_id_path=PackedInt32Array(1636015001, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone24" parent="Targets" unique_id=1903128478 instance=ExtResource("10_xpbyc")]
+position = Vector2(2750, 253)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone24/BehaviorController" parent_id_path=PackedInt32Array(1903128478, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone25" parent="Targets" unique_id=678601368 instance=ExtResource("10_xpbyc")]
+position = Vector2(2786, 484)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone25/BehaviorController" parent_id_path=PackedInt32Array(678601368, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone26" parent="Targets" unique_id=2048227598 instance=ExtResource("10_xpbyc")]
+position = Vector2(2478, 126)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone26/BehaviorController" parent_id_path=PackedInt32Array(2048227598, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone27" parent="Targets" unique_id=1138531699 instance=ExtResource("10_xpbyc")]
+position = Vector2(2507, 541)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone27/BehaviorController" parent_id_path=PackedInt32Array(1138531699, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone28" parent="Targets" unique_id=400222981 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone28/BehaviorController" parent_id_path=PackedInt32Array(400222981, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone29" parent="Targets" unique_id=252427496 instance=ExtResource("10_xpbyc")]
+position = Vector2(3202, 839)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone29/BehaviorController" parent_id_path=PackedInt32Array(252427496, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone30" parent="Targets" unique_id=1410494819 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone30/BehaviorController" parent_id_path=PackedInt32Array(1410494819, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone31" parent="Targets" unique_id=404239514 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone31/BehaviorController" parent_id_path=PackedInt32Array(404239514, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone32" parent="Targets" unique_id=661777097 instance=ExtResource("10_xpbyc")]
+position = Vector2(3166, 450)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone32/BehaviorController" parent_id_path=PackedInt32Array(661777097, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone33" parent="Targets" unique_id=1172655706 instance=ExtResource("10_xpbyc")]
+position = Vector2(3429, 339)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone33/BehaviorController" parent_id_path=PackedInt32Array(1172655706, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone34" parent="Targets" unique_id=1343249260 instance=ExtResource("10_xpbyc")]
+position = Vector2(3465, 570)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone34/BehaviorController" parent_id_path=PackedInt32Array(1343249260, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone35" parent="Targets" unique_id=1903756116 instance=ExtResource("10_xpbyc")]
+position = Vector2(3157, 212)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone35/BehaviorController" parent_id_path=PackedInt32Array(1903756116, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone36" parent="Targets" unique_id=644132659 instance=ExtResource("10_xpbyc")]
+position = Vector2(3186, 627)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone36/BehaviorController" parent_id_path=PackedInt32Array(644132659, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone91" parent="Targets" unique_id=1046544299 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone91/BehaviorController" parent_id_path=PackedInt32Array(1046544299, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone92" parent="Targets" unique_id=1443163924 instance=ExtResource("10_xpbyc")]
+position = Vector2(4390, 823)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone92/BehaviorController" parent_id_path=PackedInt32Array(1443163924, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone93" parent="Targets" unique_id=1250850337 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone93/BehaviorController" parent_id_path=PackedInt32Array(1250850337, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone94" parent="Targets" unique_id=865315388 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone94/BehaviorController" parent_id_path=PackedInt32Array(865315388, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone95" parent="Targets" unique_id=287612474 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone95/BehaviorController" parent_id_path=PackedInt32Array(287612474, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone96" parent="Targets" unique_id=616731948 instance=ExtResource("10_xpbyc")]
+position = Vector2(4617, 323)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone96/BehaviorController" parent_id_path=PackedInt32Array(616731948, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone97" parent="Targets" unique_id=1105816638 instance=ExtResource("10_xpbyc")]
+position = Vector2(4653, 554)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone97/BehaviorController" parent_id_path=PackedInt32Array(1105816638, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone98" parent="Targets" unique_id=1714693383 instance=ExtResource("10_xpbyc")]
+position = Vector2(4345, 196)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone98/BehaviorController" parent_id_path=PackedInt32Array(1714693383, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone99" parent="Targets" unique_id=287672358 instance=ExtResource("10_xpbyc")]
+position = Vector2(4374, 611)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone99/BehaviorController" parent_id_path=PackedInt32Array(287672358, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone100" parent="Targets" unique_id=1990772201 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone100/BehaviorController" parent_id_path=PackedInt32Array(1990772201, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone101" parent="Targets" unique_id=645589585 instance=ExtResource("10_xpbyc")]
+position = Vector2(5069, 909)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone101/BehaviorController" parent_id_path=PackedInt32Array(645589585, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone102" parent="Targets" unique_id=1882450589 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone102/BehaviorController" parent_id_path=PackedInt32Array(1882450589, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone103" parent="Targets" unique_id=1305679866 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone103/BehaviorController" parent_id_path=PackedInt32Array(1305679866, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone104" parent="Targets" unique_id=863554305 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone104/BehaviorController" parent_id_path=PackedInt32Array(863554305, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone105" parent="Targets" unique_id=309823985 instance=ExtResource("10_xpbyc")]
+position = Vector2(5296, 409)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone105/BehaviorController" parent_id_path=PackedInt32Array(309823985, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone106" parent="Targets" unique_id=153352411 instance=ExtResource("10_xpbyc")]
+position = Vector2(5332, 640)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone106/BehaviorController" parent_id_path=PackedInt32Array(153352411, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone107" parent="Targets" unique_id=62550719 instance=ExtResource("10_xpbyc")]
+position = Vector2(5024, 282)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone107/BehaviorController" parent_id_path=PackedInt32Array(62550719, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone108" parent="Targets" unique_id=717580380 instance=ExtResource("10_xpbyc")]
+position = Vector2(5053, 697)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone108/BehaviorController" parent_id_path=PackedInt32Array(717580380, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone109" parent="Targets" unique_id=984530977 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone109/BehaviorController" parent_id_path=PackedInt32Array(984530977, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone110" parent="Targets" unique_id=1335477151 instance=ExtResource("10_xpbyc")]
+position = Vector2(4390, 823)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone110/BehaviorController" parent_id_path=PackedInt32Array(1335477151, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone111" parent="Targets" unique_id=298320539 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone111/BehaviorController" parent_id_path=PackedInt32Array(298320539, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone112" parent="Targets" unique_id=407573198 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone112/BehaviorController" parent_id_path=PackedInt32Array(407573198, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone113" parent="Targets" unique_id=2075845086 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone113/BehaviorController" parent_id_path=PackedInt32Array(2075845086, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone114" parent="Targets" unique_id=1941464456 instance=ExtResource("10_xpbyc")]
+position = Vector2(4617, 323)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone114/BehaviorController" parent_id_path=PackedInt32Array(1941464456, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone115" parent="Targets" unique_id=1384225368 instance=ExtResource("10_xpbyc")]
+position = Vector2(4653, 554)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone115/BehaviorController" parent_id_path=PackedInt32Array(1384225368, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone116" parent="Targets" unique_id=2021122222 instance=ExtResource("10_xpbyc")]
+position = Vector2(4345, 196)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone116/BehaviorController" parent_id_path=PackedInt32Array(2021122222, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone117" parent="Targets" unique_id=1561419687 instance=ExtResource("10_xpbyc")]
+position = Vector2(4374, 611)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone117/BehaviorController" parent_id_path=PackedInt32Array(1561419687, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone118" parent="Targets" unique_id=343670583 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone118/BehaviorController" parent_id_path=PackedInt32Array(343670583, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone119" parent="Targets" unique_id=22016856 instance=ExtResource("10_xpbyc")]
+position = Vector2(5069, 909)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone119/BehaviorController" parent_id_path=PackedInt32Array(22016856, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone120" parent="Targets" unique_id=601200368 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone120/BehaviorController" parent_id_path=PackedInt32Array(601200368, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone121" parent="Targets" unique_id=2094131484 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone121/BehaviorController" parent_id_path=PackedInt32Array(2094131484, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone122" parent="Targets" unique_id=501116932 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone122/BehaviorController" parent_id_path=PackedInt32Array(501116932, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone123" parent="Targets" unique_id=1896715877 instance=ExtResource("10_xpbyc")]
+position = Vector2(5296, 409)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone123/BehaviorController" parent_id_path=PackedInt32Array(1896715877, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone124" parent="Targets" unique_id=1152208587 instance=ExtResource("10_xpbyc")]
+position = Vector2(5332, 640)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone124/BehaviorController" parent_id_path=PackedInt32Array(1152208587, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone125" parent="Targets" unique_id=1033148911 instance=ExtResource("10_xpbyc")]
+position = Vector2(5024, 282)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone125/BehaviorController" parent_id_path=PackedInt32Array(1033148911, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone126" parent="Targets" unique_id=448297103 instance=ExtResource("10_xpbyc")]
+position = Vector2(5053, 697)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone126/BehaviorController" parent_id_path=PackedInt32Array(448297103, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone127" parent="Targets" unique_id=1281818639 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone127/BehaviorController" parent_id_path=PackedInt32Array(1281818639, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone128" parent="Targets" unique_id=510809198 instance=ExtResource("10_xpbyc")]
+position = Vector2(4390, 823)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone128/BehaviorController" parent_id_path=PackedInt32Array(510809198, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone129" parent="Targets" unique_id=805318151 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone129/BehaviorController" parent_id_path=PackedInt32Array(805318151, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone130" parent="Targets" unique_id=253824077 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone130/BehaviorController" parent_id_path=PackedInt32Array(253824077, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone131" parent="Targets" unique_id=800653247 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone131/BehaviorController" parent_id_path=PackedInt32Array(800653247, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone132" parent="Targets" unique_id=61222491 instance=ExtResource("10_xpbyc")]
+position = Vector2(4617, 323)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone132/BehaviorController" parent_id_path=PackedInt32Array(61222491, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone133" parent="Targets" unique_id=747228338 instance=ExtResource("10_xpbyc")]
+position = Vector2(4653, 554)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone133/BehaviorController" parent_id_path=PackedInt32Array(747228338, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone134" parent="Targets" unique_id=1360392853 instance=ExtResource("10_xpbyc")]
+position = Vector2(4345, 196)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone134/BehaviorController" parent_id_path=PackedInt32Array(1360392853, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone135" parent="Targets" unique_id=632404096 instance=ExtResource("10_xpbyc")]
+position = Vector2(4374, 611)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone135/BehaviorController" parent_id_path=PackedInt32Array(632404096, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone136" parent="Targets" unique_id=618455617 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone136/BehaviorController" parent_id_path=PackedInt32Array(618455617, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone137" parent="Targets" unique_id=1426890011 instance=ExtResource("10_xpbyc")]
+position = Vector2(5069, 909)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone137/BehaviorController" parent_id_path=PackedInt32Array(1426890011, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone138" parent="Targets" unique_id=401795142 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone138/BehaviorController" parent_id_path=PackedInt32Array(401795142, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone139" parent="Targets" unique_id=435182573 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone139/BehaviorController" parent_id_path=PackedInt32Array(435182573, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone140" parent="Targets" unique_id=1857077101 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone140/BehaviorController" parent_id_path=PackedInt32Array(1857077101, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone141" parent="Targets" unique_id=1199507943 instance=ExtResource("10_xpbyc")]
+position = Vector2(5296, 409)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone141/BehaviorController" parent_id_path=PackedInt32Array(1199507943, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone142" parent="Targets" unique_id=663862654 instance=ExtResource("10_xpbyc")]
+position = Vector2(5332, 640)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone142/BehaviorController" parent_id_path=PackedInt32Array(663862654, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone143" parent="Targets" unique_id=520119213 instance=ExtResource("10_xpbyc")]
+position = Vector2(5024, 282)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone143/BehaviorController" parent_id_path=PackedInt32Array(520119213, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone144" parent="Targets" unique_id=623072287 instance=ExtResource("10_xpbyc")]
+position = Vector2(5053, 697)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone144/BehaviorController" parent_id_path=PackedInt32Array(623072287, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone145" parent="Targets" unique_id=407289961 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone145/BehaviorController" parent_id_path=PackedInt32Array(407289961, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone146" parent="Targets" unique_id=503892615 instance=ExtResource("10_xpbyc")]
+position = Vector2(4390, 823)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone146/BehaviorController" parent_id_path=PackedInt32Array(503892615, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone147" parent="Targets" unique_id=1328295487 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone147/BehaviorController" parent_id_path=PackedInt32Array(1328295487, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone148" parent="Targets" unique_id=1245280850 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone148/BehaviorController" parent_id_path=PackedInt32Array(1245280850, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone149" parent="Targets" unique_id=392771866 instance=ExtResource("10_xpbyc")]
+position = Vector2(4354, 434)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone149/BehaviorController" parent_id_path=PackedInt32Array(392771866, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone150" parent="Targets" unique_id=956448912 instance=ExtResource("10_xpbyc")]
+position = Vector2(4617, 323)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone150/BehaviorController" parent_id_path=PackedInt32Array(956448912, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone151" parent="Targets" unique_id=1730860651 instance=ExtResource("10_xpbyc")]
+position = Vector2(4653, 554)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone151/BehaviorController" parent_id_path=PackedInt32Array(1730860651, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone152" parent="Targets" unique_id=833073436 instance=ExtResource("10_xpbyc")]
+position = Vector2(4345, 196)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone152/BehaviorController" parent_id_path=PackedInt32Array(833073436, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone153" parent="Targets" unique_id=1828299300 instance=ExtResource("10_xpbyc")]
+position = Vector2(4374, 611)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone153/BehaviorController" parent_id_path=PackedInt32Array(1828299300, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone154" parent="Targets" unique_id=434080764 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone154/BehaviorController" parent_id_path=PackedInt32Array(434080764, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone155" parent="Targets" unique_id=2072340062 instance=ExtResource("10_xpbyc")]
+position = Vector2(5069, 909)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone155/BehaviorController" parent_id_path=PackedInt32Array(2072340062, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone156" parent="Targets" unique_id=1459301361 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone156/BehaviorController" parent_id_path=PackedInt32Array(1459301361, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone157" parent="Targets" unique_id=612732739 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone157/BehaviorController" parent_id_path=PackedInt32Array(612732739, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone158" parent="Targets" unique_id=825127096 instance=ExtResource("10_xpbyc")]
+position = Vector2(5033, 520)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone158/BehaviorController" parent_id_path=PackedInt32Array(825127096, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone159" parent="Targets" unique_id=2126074868 instance=ExtResource("10_xpbyc")]
+position = Vector2(5296, 409)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone159/BehaviorController" parent_id_path=PackedInt32Array(2126074868, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone160" parent="Targets" unique_id=1598588356 instance=ExtResource("10_xpbyc")]
+position = Vector2(5332, 640)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone160/BehaviorController" parent_id_path=PackedInt32Array(1598588356, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone161" parent="Targets" unique_id=1467279874 instance=ExtResource("10_xpbyc")]
+position = Vector2(5024, 282)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone161/BehaviorController" parent_id_path=PackedInt32Array(1467279874, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone162" parent="Targets" unique_id=1676833339 instance=ExtResource("10_xpbyc")]
+position = Vector2(5053, 697)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone162/BehaviorController" parent_id_path=PackedInt32Array(1676833339, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone163" parent="Targets" unique_id=2140913299 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone163/BehaviorController" parent_id_path=PackedInt32Array(2140913299, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone164" parent="Targets" unique_id=1019290105 instance=ExtResource("10_xpbyc")]
+position = Vector2(3779, 771)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone164/BehaviorController" parent_id_path=PackedInt32Array(1019290105, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone165" parent="Targets" unique_id=415238817 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone165/BehaviorController" parent_id_path=PackedInt32Array(415238817, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone166" parent="Targets" unique_id=674569521 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone166/BehaviorController" parent_id_path=PackedInt32Array(674569521, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone167" parent="Targets" unique_id=809310351 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone167/BehaviorController" parent_id_path=PackedInt32Array(809310351, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone168" parent="Targets" unique_id=1249091031 instance=ExtResource("10_xpbyc")]
+position = Vector2(4006, 271)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone168/BehaviorController" parent_id_path=PackedInt32Array(1249091031, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone169" parent="Targets" unique_id=1331549595 instance=ExtResource("10_xpbyc")]
+position = Vector2(4042, 502)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone169/BehaviorController" parent_id_path=PackedInt32Array(1331549595, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone170" parent="Targets" unique_id=701587725 instance=ExtResource("10_xpbyc")]
+position = Vector2(3734, 144)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone170/BehaviorController" parent_id_path=PackedInt32Array(701587725, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone171" parent="Targets" unique_id=1599456398 instance=ExtResource("10_xpbyc")]
+position = Vector2(3763, 559)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone171/BehaviorController" parent_id_path=PackedInt32Array(1599456398, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone172" parent="Targets" unique_id=711575262 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone172/BehaviorController" parent_id_path=PackedInt32Array(711575262, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone173" parent="Targets" unique_id=1843560765 instance=ExtResource("10_xpbyc")]
+position = Vector2(4458, 857)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone173/BehaviorController" parent_id_path=PackedInt32Array(1843560765, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone174" parent="Targets" unique_id=1999011197 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone174/BehaviorController" parent_id_path=PackedInt32Array(1999011197, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone175" parent="Targets" unique_id=1880369634 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone175/BehaviorController" parent_id_path=PackedInt32Array(1880369634, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone176" parent="Targets" unique_id=1295201854 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone176/BehaviorController" parent_id_path=PackedInt32Array(1295201854, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone177" parent="Targets" unique_id=826036507 instance=ExtResource("10_xpbyc")]
+position = Vector2(4685, 357)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone177/BehaviorController" parent_id_path=PackedInt32Array(826036507, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone178" parent="Targets" unique_id=1791515382 instance=ExtResource("10_xpbyc")]
+position = Vector2(4721, 588)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone178/BehaviorController" parent_id_path=PackedInt32Array(1791515382, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone179" parent="Targets" unique_id=1078680382 instance=ExtResource("10_xpbyc")]
+position = Vector2(4413, 230)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone179/BehaviorController" parent_id_path=PackedInt32Array(1078680382, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone180" parent="Targets" unique_id=2083940582 instance=ExtResource("10_xpbyc")]
+position = Vector2(4442, 645)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone180/BehaviorController" parent_id_path=PackedInt32Array(2083940582, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone181" parent="Targets" unique_id=1518510247 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone181/BehaviorController" parent_id_path=PackedInt32Array(1518510247, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone182" parent="Targets" unique_id=338930643 instance=ExtResource("10_xpbyc")]
+position = Vector2(3779, 771)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone182/BehaviorController" parent_id_path=PackedInt32Array(338930643, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone183" parent="Targets" unique_id=2065529615 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone183/BehaviorController" parent_id_path=PackedInt32Array(2065529615, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone184" parent="Targets" unique_id=1530698461 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone184/BehaviorController" parent_id_path=PackedInt32Array(1530698461, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone185" parent="Targets" unique_id=1884072008 instance=ExtResource("10_xpbyc")]
+position = Vector2(3743, 382)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone185/BehaviorController" parent_id_path=PackedInt32Array(1884072008, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone186" parent="Targets" unique_id=1561647813 instance=ExtResource("10_xpbyc")]
+position = Vector2(4006, 271)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone186/BehaviorController" parent_id_path=PackedInt32Array(1561647813, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone187" parent="Targets" unique_id=1974830542 instance=ExtResource("10_xpbyc")]
+position = Vector2(4042, 502)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone187/BehaviorController" parent_id_path=PackedInt32Array(1974830542, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone188" parent="Targets" unique_id=1219261041 instance=ExtResource("10_xpbyc")]
+position = Vector2(3734, 144)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone188/BehaviorController" parent_id_path=PackedInt32Array(1219261041, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone189" parent="Targets" unique_id=943534739 instance=ExtResource("10_xpbyc")]
+position = Vector2(3763, 559)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone189/BehaviorController" parent_id_path=PackedInt32Array(943534739, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone190" parent="Targets" unique_id=1161133643 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone190/BehaviorController" parent_id_path=PackedInt32Array(1161133643, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone191" parent="Targets" unique_id=762108507 instance=ExtResource("10_xpbyc")]
+position = Vector2(4458, 857)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone191/BehaviorController" parent_id_path=PackedInt32Array(762108507, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone192" parent="Targets" unique_id=466860618 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone192/BehaviorController" parent_id_path=PackedInt32Array(466860618, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone193" parent="Targets" unique_id=292875993 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone193/BehaviorController" parent_id_path=PackedInt32Array(292875993, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone194" parent="Targets" unique_id=1961874692 instance=ExtResource("10_xpbyc")]
+position = Vector2(4422, 468)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone194/BehaviorController" parent_id_path=PackedInt32Array(1961874692, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone195" parent="Targets" unique_id=1776774063 instance=ExtResource("10_xpbyc")]
+position = Vector2(4685, 357)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone195/BehaviorController" parent_id_path=PackedInt32Array(1776774063, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone196" parent="Targets" unique_id=410961805 instance=ExtResource("10_xpbyc")]
+position = Vector2(4721, 588)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone196/BehaviorController" parent_id_path=PackedInt32Array(410961805, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone197" parent="Targets" unique_id=1867269912 instance=ExtResource("10_xpbyc")]
+position = Vector2(4413, 230)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone197/BehaviorController" parent_id_path=PackedInt32Array(1867269912, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone198" parent="Targets" unique_id=477395455 instance=ExtResource("10_xpbyc")]
+position = Vector2(4442, 645)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone198/BehaviorController" parent_id_path=PackedInt32Array(477395455, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone199" parent="Targets" unique_id=2076933519 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone199/BehaviorController" parent_id_path=PackedInt32Array(2076933519, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone200" parent="Targets" unique_id=2003542331 instance=ExtResource("10_xpbyc")]
+position = Vector2(9423, 887)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone200/BehaviorController" parent_id_path=PackedInt32Array(2003542331, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone201" parent="Targets" unique_id=648586688 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone201/BehaviorController" parent_id_path=PackedInt32Array(648586688, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone202" parent="Targets" unique_id=669347360 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone202/BehaviorController" parent_id_path=PackedInt32Array(669347360, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone203" parent="Targets" unique_id=160190681 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone203/BehaviorController" parent_id_path=PackedInt32Array(160190681, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone204" parent="Targets" unique_id=2102636885 instance=ExtResource("10_xpbyc")]
+position = Vector2(9650, 387)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone204/BehaviorController" parent_id_path=PackedInt32Array(2102636885, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone205" parent="Targets" unique_id=1797125803 instance=ExtResource("10_xpbyc")]
+position = Vector2(9686, 618)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone205/BehaviorController" parent_id_path=PackedInt32Array(1797125803, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone206" parent="Targets" unique_id=1471213232 instance=ExtResource("10_xpbyc")]
+position = Vector2(9378, 260)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone206/BehaviorController" parent_id_path=PackedInt32Array(1471213232, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone207" parent="Targets" unique_id=549260735 instance=ExtResource("10_xpbyc")]
+position = Vector2(9407, 675)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone207/BehaviorController" parent_id_path=PackedInt32Array(549260735, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone208" parent="Targets" unique_id=1796696744 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone208/BehaviorController" parent_id_path=PackedInt32Array(1796696744, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone209" parent="Targets" unique_id=1867817402 instance=ExtResource("10_xpbyc")]
+position = Vector2(10102, 973)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone209/BehaviorController" parent_id_path=PackedInt32Array(1867817402, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone210" parent="Targets" unique_id=25353824 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone210/BehaviorController" parent_id_path=PackedInt32Array(25353824, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone211" parent="Targets" unique_id=945331589 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone211/BehaviorController" parent_id_path=PackedInt32Array(945331589, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone212" parent="Targets" unique_id=1976994110 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone212/BehaviorController" parent_id_path=PackedInt32Array(1976994110, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone213" parent="Targets" unique_id=851897617 instance=ExtResource("10_xpbyc")]
+position = Vector2(10329, 473)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone213/BehaviorController" parent_id_path=PackedInt32Array(851897617, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone214" parent="Targets" unique_id=1867248531 instance=ExtResource("10_xpbyc")]
+position = Vector2(10365, 704)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone214/BehaviorController" parent_id_path=PackedInt32Array(1867248531, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone215" parent="Targets" unique_id=1564852023 instance=ExtResource("10_xpbyc")]
+position = Vector2(10057, 346)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone215/BehaviorController" parent_id_path=PackedInt32Array(1564852023, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone216" parent="Targets" unique_id=2063945342 instance=ExtResource("10_xpbyc")]
+position = Vector2(10086, 761)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone216/BehaviorController" parent_id_path=PackedInt32Array(2063945342, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone217" parent="Targets" unique_id=723150977 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone217/BehaviorController" parent_id_path=PackedInt32Array(723150977, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone218" parent="Targets" unique_id=1377293232 instance=ExtResource("10_xpbyc")]
+position = Vector2(9423, 887)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone218/BehaviorController" parent_id_path=PackedInt32Array(1377293232, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone219" parent="Targets" unique_id=1064590004 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone219/BehaviorController" parent_id_path=PackedInt32Array(1064590004, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone220" parent="Targets" unique_id=1804923655 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone220/BehaviorController" parent_id_path=PackedInt32Array(1804923655, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone221" parent="Targets" unique_id=1400006798 instance=ExtResource("10_xpbyc")]
+position = Vector2(9387, 498)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone221/BehaviorController" parent_id_path=PackedInt32Array(1400006798, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone222" parent="Targets" unique_id=2118955991 instance=ExtResource("10_xpbyc")]
+position = Vector2(9650, 387)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone222/BehaviorController" parent_id_path=PackedInt32Array(2118955991, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone223" parent="Targets" unique_id=2021902160 instance=ExtResource("10_xpbyc")]
+position = Vector2(9686, 618)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone223/BehaviorController" parent_id_path=PackedInt32Array(2021902160, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone224" parent="Targets" unique_id=1657940281 instance=ExtResource("10_xpbyc")]
+position = Vector2(9378, 260)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone224/BehaviorController" parent_id_path=PackedInt32Array(1657940281, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone225" parent="Targets" unique_id=1277323766 instance=ExtResource("10_xpbyc")]
+position = Vector2(9407, 675)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone225/BehaviorController" parent_id_path=PackedInt32Array(1277323766, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone226" parent="Targets" unique_id=781860290 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone226/BehaviorController" parent_id_path=PackedInt32Array(781860290, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone227" parent="Targets" unique_id=657836525 instance=ExtResource("10_xpbyc")]
+position = Vector2(10102, 973)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone227/BehaviorController" parent_id_path=PackedInt32Array(657836525, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone228" parent="Targets" unique_id=149975871 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone228/BehaviorController" parent_id_path=PackedInt32Array(149975871, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone229" parent="Targets" unique_id=1883596027 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone229/BehaviorController" parent_id_path=PackedInt32Array(1883596027, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone230" parent="Targets" unique_id=1438598338 instance=ExtResource("10_xpbyc")]
+position = Vector2(10066, 584)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone230/BehaviorController" parent_id_path=PackedInt32Array(1438598338, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone231" parent="Targets" unique_id=2056795834 instance=ExtResource("10_xpbyc")]
+position = Vector2(10329, 473)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone231/BehaviorController" parent_id_path=PackedInt32Array(2056795834, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone232" parent="Targets" unique_id=750464769 instance=ExtResource("10_xpbyc")]
+position = Vector2(10365, 704)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone232/BehaviorController" parent_id_path=PackedInt32Array(750464769, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone233" parent="Targets" unique_id=75446440 instance=ExtResource("10_xpbyc")]
+position = Vector2(10057, 346)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone233/BehaviorController" parent_id_path=PackedInt32Array(75446440, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone234" parent="Targets" unique_id=728930792 instance=ExtResource("10_xpbyc")]
+position = Vector2(10086, 761)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone234/BehaviorController" parent_id_path=PackedInt32Array(728930792, 334432352) index="0" unique_id=1341184769]
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone37" parent="Targets" unique_id=901025289 instance=ExtResource("10_xpbyc")]
+position = Vector2(-2018, 409)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone37/BehaviorController" parent_id_path=PackedInt32Array(901025289, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone38" parent="Targets" unique_id=1244213680 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1982, 798)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone38/BehaviorController" parent_id_path=PackedInt32Array(1244213680, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone39" parent="Targets" unique_id=900191749 instance=ExtResource("10_xpbyc")]
+position = Vector2(-2018, 409)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone39/BehaviorController" parent_id_path=PackedInt32Array(900191749, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone40" parent="Targets" unique_id=572115887 instance=ExtResource("10_xpbyc")]
+position = Vector2(-2018, 409)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone40/BehaviorController" parent_id_path=PackedInt32Array(572115887, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone41" parent="Targets" unique_id=547635733 instance=ExtResource("10_xpbyc")]
+position = Vector2(-2018, 409)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone41/BehaviorController" parent_id_path=PackedInt32Array(547635733, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone42" parent="Targets" unique_id=1905590837 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1755, 298)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone42/BehaviorController" parent_id_path=PackedInt32Array(1905590837, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone43" parent="Targets" unique_id=1423770163 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1719, 529)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone43/BehaviorController" parent_id_path=PackedInt32Array(1423770163, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone44" parent="Targets" unique_id=1942590526 instance=ExtResource("10_xpbyc")]
+position = Vector2(-2027, 171)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone44/BehaviorController" parent_id_path=PackedInt32Array(1942590526, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone45" parent="Targets" unique_id=1325290344 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1998, 586)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone45/BehaviorController" parent_id_path=PackedInt32Array(1325290344, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone46" parent="Targets" unique_id=430655 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1339, 495)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone46/BehaviorController" parent_id_path=PackedInt32Array(430655, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone47" parent="Targets" unique_id=390445087 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1303, 884)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone47/BehaviorController" parent_id_path=PackedInt32Array(390445087, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone48" parent="Targets" unique_id=1060836543 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1339, 495)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone48/BehaviorController" parent_id_path=PackedInt32Array(1060836543, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone49" parent="Targets" unique_id=390646532 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1339, 495)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone49/BehaviorController" parent_id_path=PackedInt32Array(390646532, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone50" parent="Targets" unique_id=321604281 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1339, 495)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone50/BehaviorController" parent_id_path=PackedInt32Array(321604281, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone51" parent="Targets" unique_id=146897239 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1076, 384)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone51/BehaviorController" parent_id_path=PackedInt32Array(146897239, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone52" parent="Targets" unique_id=1365441455 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1040, 615)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone52/BehaviorController" parent_id_path=PackedInt32Array(1365441455, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone53" parent="Targets" unique_id=743973695 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1348, 257)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone53/BehaviorController" parent_id_path=PackedInt32Array(743973695, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone54" parent="Targets" unique_id=1928447644 instance=ExtResource("10_xpbyc")]
+position = Vector2(-1319, 672)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone54/BehaviorController" parent_id_path=PackedInt32Array(1928447644, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone55" parent="Targets" unique_id=732573908 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5299, 272)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone55/BehaviorController" parent_id_path=PackedInt32Array(732573908, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone56" parent="Targets" unique_id=1843976110 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5263, 661)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone56/BehaviorController" parent_id_path=PackedInt32Array(1843976110, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone57" parent="Targets" unique_id=1328793493 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5299, 272)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone57/BehaviorController" parent_id_path=PackedInt32Array(1328793493, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone58" parent="Targets" unique_id=1032952599 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5299, 272)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone58/BehaviorController" parent_id_path=PackedInt32Array(1032952599, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone59" parent="Targets" unique_id=1563116083 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5299, 272)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone59/BehaviorController" parent_id_path=PackedInt32Array(1563116083, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone60" parent="Targets" unique_id=181008413 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5036, 161)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone60/BehaviorController" parent_id_path=PackedInt32Array(181008413, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone61" parent="Targets" unique_id=1331983387 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5000, 392)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone61/BehaviorController" parent_id_path=PackedInt32Array(1331983387, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone62" parent="Targets" unique_id=1490420071 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5308, 34)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone62/BehaviorController" parent_id_path=PackedInt32Array(1490420071, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone63" parent="Targets" unique_id=163625832 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5279, 449)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone63/BehaviorController" parent_id_path=PackedInt32Array(163625832, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone64" parent="Targets" unique_id=370840424 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4620, 358)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone64/BehaviorController" parent_id_path=PackedInt32Array(370840424, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone65" parent="Targets" unique_id=910224987 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4584, 747)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone65/BehaviorController" parent_id_path=PackedInt32Array(910224987, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone66" parent="Targets" unique_id=1411956238 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4620, 358)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone66/BehaviorController" parent_id_path=PackedInt32Array(1411956238, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone67" parent="Targets" unique_id=1847310853 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4620, 358)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone67/BehaviorController" parent_id_path=PackedInt32Array(1847310853, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone68" parent="Targets" unique_id=1842476309 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4620, 358)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone68/BehaviorController" parent_id_path=PackedInt32Array(1842476309, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone69" parent="Targets" unique_id=955809389 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4357, 247)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone69/BehaviorController" parent_id_path=PackedInt32Array(955809389, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone70" parent="Targets" unique_id=1559160623 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4321, 478)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone70/BehaviorController" parent_id_path=PackedInt32Array(1559160623, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone71" parent="Targets" unique_id=105507865 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4629, 120)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone71/BehaviorController" parent_id_path=PackedInt32Array(105507865, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone72" parent="Targets" unique_id=157729493 instance=ExtResource("10_xpbyc")]
+position = Vector2(-4600, 535)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone72/BehaviorController" parent_id_path=PackedInt32Array(157729493, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone73" parent="Targets" unique_id=1128442899 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6504, 183)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone73/BehaviorController" parent_id_path=PackedInt32Array(1128442899, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone74" parent="Targets" unique_id=111879813 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6468, 572)
+activation_time = 2.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone74/BehaviorController" parent_id_path=PackedInt32Array(111879813, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone75" parent="Targets" unique_id=1045708646 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6504, 183)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone75/BehaviorController" parent_id_path=PackedInt32Array(1045708646, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone76" parent="Targets" unique_id=550026232 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6504, 183)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone76/BehaviorController" parent_id_path=PackedInt32Array(550026232, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone77" parent="Targets" unique_id=1651631398 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6504, 183)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone77/BehaviorController" parent_id_path=PackedInt32Array(1651631398, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone78" parent="Targets" unique_id=2067099248 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6241, 72)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone78/BehaviorController" parent_id_path=PackedInt32Array(2067099248, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone79" parent="Targets" unique_id=1124659036 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6205, 303)
+activation_time = 3.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone79/BehaviorController" parent_id_path=PackedInt32Array(1124659036, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone80" parent="Targets" unique_id=1934926842 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6513, -55)
+activation_time = 0.1
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone80/BehaviorController" parent_id_path=PackedInt32Array(1934926842, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone81" parent="Targets" unique_id=425557625 instance=ExtResource("10_xpbyc")]
+position = Vector2(-6484, 360)
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone81/BehaviorController" parent_id_path=PackedInt32Array(425557625, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone82" parent="Targets" unique_id=1288813520 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5825, 269)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone82/BehaviorController" parent_id_path=PackedInt32Array(1288813520, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone83" parent="Targets" unique_id=793981069 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5789, 658)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone83/BehaviorController" parent_id_path=PackedInt32Array(793981069, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone84" parent="Targets" unique_id=1027205647 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5825, 269)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone84/BehaviorController" parent_id_path=PackedInt32Array(1027205647, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone85" parent="Targets" unique_id=700497545 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5825, 269)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone85/BehaviorController" parent_id_path=PackedInt32Array(700497545, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone86" parent="Targets" unique_id=1956447868 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5825, 269)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone86/BehaviorController" parent_id_path=PackedInt32Array(1956447868, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone87" parent="Targets" unique_id=2026396688 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5562, 158)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone87/BehaviorController" parent_id_path=PackedInt32Array(2026396688, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone88" parent="Targets" unique_id=1217080395 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5526, 389)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone88/BehaviorController" parent_id_path=PackedInt32Array(1217080395, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone89" parent="Targets" unique_id=965056037 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5834, 31)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone89/BehaviorController" parent_id_path=PackedInt32Array(965056037, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="ScoutDrone90" parent="Targets" unique_id=1888890100 instance=ExtResource("10_xpbyc")]
+position = Vector2(-5805, 446)
+activation_time = 10.0
+
+[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone90/BehaviorController" parent_id_path=PackedInt32Array(1888890100, 334432352) index="0" unique_id=1341184769]
+direction = Vector2(1, 0)
+distance = 50000.0
+movement_speed = 377.0
+
+[node name="Drone" parent="Targets" unique_id=1235655881 instance=ExtResource("8_ry1jc")]
+position = Vector2(791, 1269)
+activation_time = 1.0
+
+[node name="CollisionShape2D" parent="Targets/Drone" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone/BehaviorController" parent_id_path=PackedInt32Array(1235655881, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone2" parent="Targets" unique_id=16834523 instance=ExtResource("8_ry1jc")]
+position = Vector2(1084, 1269)
+activation_time = 2.0
+
+[node name="CollisionShape2D" parent="Targets/Drone2" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone2/BehaviorController" parent_id_path=PackedInt32Array(16834523, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone3" parent="Targets" unique_id=222059649 instance=ExtResource("8_ry1jc")]
+position = Vector2(541, 1269)
+activation_time = 4.0
+
+[node name="CollisionShape2D" parent="Targets/Drone3" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone3/BehaviorController" parent_id_path=PackedInt32Array(222059649, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone4" parent="Targets" unique_id=1888243794 instance=ExtResource("8_ry1jc")]
+position = Vector2(-1155, 1269)
+activation_time = 25.0
+
+[node name="CollisionShape2D" parent="Targets/Drone4" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone4/BehaviorController" parent_id_path=PackedInt32Array(1888243794, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone5" parent="Targets" unique_id=165635790 instance=ExtResource("8_ry1jc")]
+position = Vector2(-862, 1269)
+activation_time = 27.0
+
+[node name="CollisionShape2D" parent="Targets/Drone5" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone5/BehaviorController" parent_id_path=PackedInt32Array(165635790, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone6" parent="Targets" unique_id=292210308 instance=ExtResource("8_ry1jc")]
+position = Vector2(-1405, 1269)
+activation_time = 26.0
+
+[node name="CollisionShape2D" parent="Targets/Drone6" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone6/BehaviorController" parent_id_path=PackedInt32Array(292210308, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone7" parent="Targets" unique_id=981169516 instance=ExtResource("8_ry1jc")]
+position = Vector2(2537, 1302)
+activation_time = 47.0
+
+[node name="CollisionShape2D" parent="Targets/Drone7" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone7/BehaviorController" parent_id_path=PackedInt32Array(981169516, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone8" parent="Targets" unique_id=275841809 instance=ExtResource("8_ry1jc")]
+position = Vector2(2830, 1302)
+activation_time = 50.0
+
+[node name="CollisionShape2D" parent="Targets/Drone8" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone8/BehaviorController" parent_id_path=PackedInt32Array(275841809, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
+
+[node name="Drone9" parent="Targets" unique_id=793087289 instance=ExtResource("8_ry1jc")]
+position = Vector2(2287, 1302)
+activation_time = 48.0
+
+[node name="CollisionShape2D" parent="Targets/Drone9" index="1" unique_id=768504801]
+shape = SubResource("RectangleShape2D_wam8k")
+
+[node name="FlyToMarker" parent="Targets/Drone9/BehaviorController" parent_id_path=PackedInt32Array(793087289, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
+target_marker = NodePath("../../../../DroneStartMarker")
 
 [node name="DroneStartMarker" type="Marker2D" parent="." unique_id=1541736390]
 position = Vector2(1331, 262)
@@ -122,7 +2091,247 @@ metadata/_edit_lock_ = true
 start_fully_covered = true
 
 [editable path="CameraEffects"]
-[editable path="Drone"]
-[editable path="Drone2"]
-[editable path="Drone3"]
+[editable path="Targets/ScoutDrone"]
+[editable path="Targets/ScoutDrone2"]
+[editable path="Targets/ScoutDrone3"]
+[editable path="Targets/ScoutDrone4"]
+[editable path="Targets/ScoutDrone5"]
+[editable path="Targets/ScoutDrone6"]
+[editable path="Targets/ScoutDrone7"]
+[editable path="Targets/ScoutDrone8"]
+[editable path="Targets/ScoutDrone9"]
+[editable path="Targets/ScoutDrone10"]
+[editable path="Targets/ScoutDrone11"]
+[editable path="Targets/ScoutDrone12"]
+[editable path="Targets/ScoutDrone13"]
+[editable path="Targets/ScoutDrone14"]
+[editable path="Targets/ScoutDrone15"]
+[editable path="Targets/ScoutDrone16"]
+[editable path="Targets/ScoutDrone17"]
+[editable path="Targets/ScoutDrone18"]
+[editable path="Targets/ScoutDrone19"]
+[editable path="Targets/ScoutDrone20"]
+[editable path="Targets/ScoutDrone21"]
+[editable path="Targets/ScoutDrone22"]
+[editable path="Targets/ScoutDrone23"]
+[editable path="Targets/ScoutDrone24"]
+[editable path="Targets/ScoutDrone25"]
+[editable path="Targets/ScoutDrone26"]
+[editable path="Targets/ScoutDrone27"]
+[editable path="Targets/ScoutDrone28"]
+[editable path="Targets/ScoutDrone29"]
+[editable path="Targets/ScoutDrone30"]
+[editable path="Targets/ScoutDrone31"]
+[editable path="Targets/ScoutDrone32"]
+[editable path="Targets/ScoutDrone33"]
+[editable path="Targets/ScoutDrone34"]
+[editable path="Targets/ScoutDrone35"]
+[editable path="Targets/ScoutDrone36"]
+[editable path="Targets/ScoutDrone91"]
+[editable path="Targets/ScoutDrone92"]
+[editable path="Targets/ScoutDrone93"]
+[editable path="Targets/ScoutDrone94"]
+[editable path="Targets/ScoutDrone95"]
+[editable path="Targets/ScoutDrone96"]
+[editable path="Targets/ScoutDrone97"]
+[editable path="Targets/ScoutDrone98"]
+[editable path="Targets/ScoutDrone99"]
+[editable path="Targets/ScoutDrone100"]
+[editable path="Targets/ScoutDrone101"]
+[editable path="Targets/ScoutDrone102"]
+[editable path="Targets/ScoutDrone103"]
+[editable path="Targets/ScoutDrone104"]
+[editable path="Targets/ScoutDrone105"]
+[editable path="Targets/ScoutDrone106"]
+[editable path="Targets/ScoutDrone107"]
+[editable path="Targets/ScoutDrone108"]
+[editable path="Targets/ScoutDrone109"]
+[editable path="Targets/ScoutDrone110"]
+[editable path="Targets/ScoutDrone111"]
+[editable path="Targets/ScoutDrone112"]
+[editable path="Targets/ScoutDrone113"]
+[editable path="Targets/ScoutDrone114"]
+[editable path="Targets/ScoutDrone115"]
+[editable path="Targets/ScoutDrone116"]
+[editable path="Targets/ScoutDrone117"]
+[editable path="Targets/ScoutDrone118"]
+[editable path="Targets/ScoutDrone119"]
+[editable path="Targets/ScoutDrone120"]
+[editable path="Targets/ScoutDrone121"]
+[editable path="Targets/ScoutDrone122"]
+[editable path="Targets/ScoutDrone123"]
+[editable path="Targets/ScoutDrone124"]
+[editable path="Targets/ScoutDrone125"]
+[editable path="Targets/ScoutDrone126"]
+[editable path="Targets/ScoutDrone127"]
+[editable path="Targets/ScoutDrone128"]
+[editable path="Targets/ScoutDrone129"]
+[editable path="Targets/ScoutDrone130"]
+[editable path="Targets/ScoutDrone131"]
+[editable path="Targets/ScoutDrone132"]
+[editable path="Targets/ScoutDrone133"]
+[editable path="Targets/ScoutDrone134"]
+[editable path="Targets/ScoutDrone135"]
+[editable path="Targets/ScoutDrone136"]
+[editable path="Targets/ScoutDrone137"]
+[editable path="Targets/ScoutDrone138"]
+[editable path="Targets/ScoutDrone139"]
+[editable path="Targets/ScoutDrone140"]
+[editable path="Targets/ScoutDrone141"]
+[editable path="Targets/ScoutDrone142"]
+[editable path="Targets/ScoutDrone143"]
+[editable path="Targets/ScoutDrone144"]
+[editable path="Targets/ScoutDrone145"]
+[editable path="Targets/ScoutDrone146"]
+[editable path="Targets/ScoutDrone147"]
+[editable path="Targets/ScoutDrone148"]
+[editable path="Targets/ScoutDrone149"]
+[editable path="Targets/ScoutDrone150"]
+[editable path="Targets/ScoutDrone151"]
+[editable path="Targets/ScoutDrone152"]
+[editable path="Targets/ScoutDrone153"]
+[editable path="Targets/ScoutDrone154"]
+[editable path="Targets/ScoutDrone155"]
+[editable path="Targets/ScoutDrone156"]
+[editable path="Targets/ScoutDrone157"]
+[editable path="Targets/ScoutDrone158"]
+[editable path="Targets/ScoutDrone159"]
+[editable path="Targets/ScoutDrone160"]
+[editable path="Targets/ScoutDrone161"]
+[editable path="Targets/ScoutDrone162"]
+[editable path="Targets/ScoutDrone163"]
+[editable path="Targets/ScoutDrone164"]
+[editable path="Targets/ScoutDrone165"]
+[editable path="Targets/ScoutDrone166"]
+[editable path="Targets/ScoutDrone167"]
+[editable path="Targets/ScoutDrone168"]
+[editable path="Targets/ScoutDrone169"]
+[editable path="Targets/ScoutDrone170"]
+[editable path="Targets/ScoutDrone171"]
+[editable path="Targets/ScoutDrone172"]
+[editable path="Targets/ScoutDrone173"]
+[editable path="Targets/ScoutDrone174"]
+[editable path="Targets/ScoutDrone175"]
+[editable path="Targets/ScoutDrone176"]
+[editable path="Targets/ScoutDrone177"]
+[editable path="Targets/ScoutDrone178"]
+[editable path="Targets/ScoutDrone179"]
+[editable path="Targets/ScoutDrone180"]
+[editable path="Targets/ScoutDrone181"]
+[editable path="Targets/ScoutDrone182"]
+[editable path="Targets/ScoutDrone183"]
+[editable path="Targets/ScoutDrone184"]
+[editable path="Targets/ScoutDrone185"]
+[editable path="Targets/ScoutDrone186"]
+[editable path="Targets/ScoutDrone187"]
+[editable path="Targets/ScoutDrone188"]
+[editable path="Targets/ScoutDrone189"]
+[editable path="Targets/ScoutDrone190"]
+[editable path="Targets/ScoutDrone191"]
+[editable path="Targets/ScoutDrone192"]
+[editable path="Targets/ScoutDrone193"]
+[editable path="Targets/ScoutDrone194"]
+[editable path="Targets/ScoutDrone195"]
+[editable path="Targets/ScoutDrone196"]
+[editable path="Targets/ScoutDrone197"]
+[editable path="Targets/ScoutDrone198"]
+[editable path="Targets/ScoutDrone199"]
+[editable path="Targets/ScoutDrone200"]
+[editable path="Targets/ScoutDrone201"]
+[editable path="Targets/ScoutDrone202"]
+[editable path="Targets/ScoutDrone203"]
+[editable path="Targets/ScoutDrone204"]
+[editable path="Targets/ScoutDrone205"]
+[editable path="Targets/ScoutDrone206"]
+[editable path="Targets/ScoutDrone207"]
+[editable path="Targets/ScoutDrone208"]
+[editable path="Targets/ScoutDrone209"]
+[editable path="Targets/ScoutDrone210"]
+[editable path="Targets/ScoutDrone211"]
+[editable path="Targets/ScoutDrone212"]
+[editable path="Targets/ScoutDrone213"]
+[editable path="Targets/ScoutDrone214"]
+[editable path="Targets/ScoutDrone215"]
+[editable path="Targets/ScoutDrone216"]
+[editable path="Targets/ScoutDrone217"]
+[editable path="Targets/ScoutDrone218"]
+[editable path="Targets/ScoutDrone219"]
+[editable path="Targets/ScoutDrone220"]
+[editable path="Targets/ScoutDrone221"]
+[editable path="Targets/ScoutDrone222"]
+[editable path="Targets/ScoutDrone223"]
+[editable path="Targets/ScoutDrone224"]
+[editable path="Targets/ScoutDrone225"]
+[editable path="Targets/ScoutDrone226"]
+[editable path="Targets/ScoutDrone227"]
+[editable path="Targets/ScoutDrone228"]
+[editable path="Targets/ScoutDrone229"]
+[editable path="Targets/ScoutDrone230"]
+[editable path="Targets/ScoutDrone231"]
+[editable path="Targets/ScoutDrone232"]
+[editable path="Targets/ScoutDrone233"]
+[editable path="Targets/ScoutDrone234"]
+[editable path="Targets/ScoutDrone37"]
+[editable path="Targets/ScoutDrone38"]
+[editable path="Targets/ScoutDrone39"]
+[editable path="Targets/ScoutDrone40"]
+[editable path="Targets/ScoutDrone41"]
+[editable path="Targets/ScoutDrone42"]
+[editable path="Targets/ScoutDrone43"]
+[editable path="Targets/ScoutDrone44"]
+[editable path="Targets/ScoutDrone45"]
+[editable path="Targets/ScoutDrone46"]
+[editable path="Targets/ScoutDrone47"]
+[editable path="Targets/ScoutDrone48"]
+[editable path="Targets/ScoutDrone49"]
+[editable path="Targets/ScoutDrone50"]
+[editable path="Targets/ScoutDrone51"]
+[editable path="Targets/ScoutDrone52"]
+[editable path="Targets/ScoutDrone53"]
+[editable path="Targets/ScoutDrone54"]
+[editable path="Targets/ScoutDrone55"]
+[editable path="Targets/ScoutDrone56"]
+[editable path="Targets/ScoutDrone57"]
+[editable path="Targets/ScoutDrone58"]
+[editable path="Targets/ScoutDrone59"]
+[editable path="Targets/ScoutDrone60"]
+[editable path="Targets/ScoutDrone61"]
+[editable path="Targets/ScoutDrone62"]
+[editable path="Targets/ScoutDrone63"]
+[editable path="Targets/ScoutDrone64"]
+[editable path="Targets/ScoutDrone65"]
+[editable path="Targets/ScoutDrone66"]
+[editable path="Targets/ScoutDrone67"]
+[editable path="Targets/ScoutDrone68"]
+[editable path="Targets/ScoutDrone69"]
+[editable path="Targets/ScoutDrone70"]
+[editable path="Targets/ScoutDrone71"]
+[editable path="Targets/ScoutDrone72"]
+[editable path="Targets/ScoutDrone73"]
+[editable path="Targets/ScoutDrone74"]
+[editable path="Targets/ScoutDrone75"]
+[editable path="Targets/ScoutDrone76"]
+[editable path="Targets/ScoutDrone77"]
+[editable path="Targets/ScoutDrone78"]
+[editable path="Targets/ScoutDrone79"]
+[editable path="Targets/ScoutDrone80"]
+[editable path="Targets/ScoutDrone81"]
+[editable path="Targets/ScoutDrone82"]
+[editable path="Targets/ScoutDrone83"]
+[editable path="Targets/ScoutDrone84"]
+[editable path="Targets/ScoutDrone85"]
+[editable path="Targets/ScoutDrone86"]
+[editable path="Targets/ScoutDrone87"]
+[editable path="Targets/ScoutDrone88"]
+[editable path="Targets/ScoutDrone89"]
+[editable path="Targets/ScoutDrone90"]
+[editable path="Targets/Drone"]
+[editable path="Targets/Drone2"]
+[editable path="Targets/Drone3"]
+[editable path="Targets/Drone4"]
+[editable path="Targets/Drone5"]
+[editable path="Targets/Drone6"]
+[editable path="Targets/Drone7"]
+[editable path="Targets/Drone8"]
+[editable path="Targets/Drone9"]
 [editable path="CanvasLayer"]
