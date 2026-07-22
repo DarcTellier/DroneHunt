@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dxrci4libptwo" path="res://Game/Main/Main.gd" id="1_oab63"]
 [ext_resource type="PackedScene" uid="uid://xisonsue8dh4" path="res://Game/Round/RoundController.tscn" id="2_bhrp5"]
-[ext_resource type="Texture2D" uid="uid://bexgfaoelbo6r" path="res://Art/Backgrounds/Beach_BG_ChatGPT.png" id="3_1r4f6"]
+[ext_resource type="Texture2D" uid="uid://t1h3yxv71lk4" path="res://Art/Backgrounds/island scenery.png" id="3_fsdd5"]
+[ext_resource type="Texture2D" uid="uid://08g0bf2b4qsg" path="res://Art/Backgrounds/island scenery2.png" id="4_ry1jc"]
 [ext_resource type="Script" uid="uid://3fva2g5hmpep" path="res://Effects/Camera/Camera2DController.gd" id="4_vp847"]
 [ext_resource type="PackedScene" uid="uid://b7yt4y70h4p2e" path="res://Effects/Camera/CameraEffects.tscn" id="5_xpbyc"]
 [ext_resource type="Resource" uid="uid://cxrahyh2okybk" path="res://Effects/Profile/CameraFeedbackProfile.tres" id="6_bhrp5"]
@@ -14,9 +15,8 @@
 [ext_resource type="Script" uid="uid://debu26j7dvvny" path="res://UI/HUD/ScoreLabel.gd" id="10_u8y8r"]
 [ext_resource type="PackedScene" uid="uid://bkhmivxbgwwv1" path="res://Drones/Drone/ScoutDrone.tscn" id="10_xpbyc"]
 [ext_resource type="PackedScene" uid="uid://dphm6rugw4vog" path="res://Effects/Transition/Transitions.tscn" id="13_vp847"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wam8k"]
-size = Vector2(215, 75)
+[ext_resource type="Texture2D" uid="uid://cqeu71rcxjl0c" path="res://Art/Props/Crate.png" id="15_fsdd5"]
+[ext_resource type="Texture2D" uid="uid://6qgm2ku0d7sa" path="res://Art/Props/RedBarell.png" id="15_w0u7a"]
 
 [node name="Main" type="Node2D" unique_id=1392666010]
 script = ExtResource("1_oab63")
@@ -32,17 +32,46 @@ transition_controller = NodePath("../Transitions")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1521156582]
-position = Vector2(-696.00006, -296.99994)
-scale = Vector2(1.7810842, 1.7810841)
-texture = ExtResource("3_1r4f6")
+texture = ExtResource("3_fsdd5")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D2" type="Sprite2D" parent="Background" unique_id=1420393009]
+position = Vector2(-1920, 0)
+texture = ExtResource("4_ry1jc")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background" unique_id=1951081940]
+position = Vector2(-3840, 0)
+texture = ExtResource("4_ry1jc")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="Background" unique_id=200165488]
+position = Vector2(-5760, 0)
+texture = ExtResource("4_ry1jc")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background" unique_id=321000045]
+position = Vector2(3840, 0)
+texture = ExtResource("4_ry1jc")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="Background" unique_id=37029622]
+position = Vector2(5760, 0)
+texture = ExtResource("4_ry1jc")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="Background" unique_id=1693212462]
+position = Vector2(1920, 0)
+texture = ExtResource("4_ry1jc")
+centered = false
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1965277682]
+position = Vector2(-1, 0)
 anchor_mode = 0
 script = ExtResource("4_vp847")
-min_x = -695.0
-max_x = 360.0
+min_x = -4000.0
+max_x = 4000.0
 
 [node name="CameraEffects" parent="." unique_id=1842931647 instance=ExtResource("5_xpbyc")]
 default_feedback_profile = ExtResource("6_bhrp5")
@@ -66,6 +95,13 @@ firing_feedback_profile = ExtResource("9_1r4f6")
 position = Vector2(2487, 364)
 activation_time = 3.0
 
+[node name="CollisionShape2D" parent="Targets/ScoutDrone" index="1" unique_id=768504801]
+position = Vector2(0, -3.5)
+
+[node name="HealthBar" parent="Targets/ScoutDrone" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone/BehaviorController" parent_id_path=PackedInt32Array(891162022, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -74,37 +110,21 @@ movement_speed = 377.0
 position = Vector2(2523, 753)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone2" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone2/BehaviorController" parent_id_path=PackedInt32Array(838739886, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone3" parent="Targets" unique_id=1218823680 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone3/BehaviorController" parent_id_path=PackedInt32Array(1218823680, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone4" parent="Targets" unique_id=44487446 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone4/BehaviorController" parent_id_path=PackedInt32Array(44487446, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone5" parent="Targets" unique_id=1438950575 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone5/BehaviorController" parent_id_path=PackedInt32Array(1438950575, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone6" parent="Targets" unique_id=1153296087 instance=ExtResource("10_xpbyc")]
 position = Vector2(2750, 253)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone6" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone6/BehaviorController" parent_id_path=PackedInt32Array(1153296087, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -114,6 +134,10 @@ movement_speed = 377.0
 position = Vector2(2786, 484)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone7" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone7/BehaviorController" parent_id_path=PackedInt32Array(1590743914, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -122,12 +146,20 @@ movement_speed = 377.0
 position = Vector2(2478, 126)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone8" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone8/BehaviorController" parent_id_path=PackedInt32Array(76216022, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone9" parent="Targets" unique_id=1726417680 instance=ExtResource("10_xpbyc")]
 position = Vector2(2507, 541)
+
+[node name="HealthBar" parent="Targets/ScoutDrone9" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone9/BehaviorController" parent_id_path=PackedInt32Array(1726417680, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -137,6 +169,10 @@ movement_speed = 377.0
 position = Vector2(3166, 450)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone10" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone10/BehaviorController" parent_id_path=PackedInt32Array(1658550937, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -144,6 +180,10 @@ movement_speed = 377.0
 [node name="ScoutDrone11" parent="Targets" unique_id=1470016843 instance=ExtResource("10_xpbyc")]
 position = Vector2(3202, 839)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone11" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone11/BehaviorController" parent_id_path=PackedInt32Array(1470016843, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -153,6 +193,10 @@ movement_speed = 377.0
 position = Vector2(3166, 450)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone12" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone12/BehaviorController" parent_id_path=PackedInt32Array(417277252, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -160,6 +204,10 @@ movement_speed = 377.0
 [node name="ScoutDrone13" parent="Targets" unique_id=1036290124 instance=ExtResource("10_xpbyc")]
 position = Vector2(3166, 450)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone13" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone13/BehaviorController" parent_id_path=PackedInt32Array(1036290124, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -169,6 +217,10 @@ movement_speed = 377.0
 position = Vector2(3166, 450)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone14" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone14/BehaviorController" parent_id_path=PackedInt32Array(2105525480, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -176,6 +228,10 @@ movement_speed = 377.0
 [node name="ScoutDrone15" parent="Targets" unique_id=1067695780 instance=ExtResource("10_xpbyc")]
 position = Vector2(3429, 339)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone15" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone15/BehaviorController" parent_id_path=PackedInt32Array(1067695780, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -185,6 +241,10 @@ movement_speed = 377.0
 position = Vector2(3465, 570)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone16" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone16/BehaviorController" parent_id_path=PackedInt32Array(1494204713, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -192,6 +252,10 @@ movement_speed = 377.0
 [node name="ScoutDrone17" parent="Targets" unique_id=1205658025 instance=ExtResource("10_xpbyc")]
 position = Vector2(3157, 212)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone17" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone17/BehaviorController" parent_id_path=PackedInt32Array(1205658025, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -201,15 +265,11 @@ movement_speed = 377.0
 position = Vector2(3186, 627)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone18" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone18/BehaviorController" parent_id_path=PackedInt32Array(1759531951, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone19" parent="Targets" unique_id=1088306674 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone19/BehaviorController" parent_id_path=PackedInt32Array(1088306674, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
@@ -217,37 +277,21 @@ movement_speed = 377.0
 position = Vector2(2523, 753)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone20" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone20/BehaviorController" parent_id_path=PackedInt32Array(1283782935, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone21" parent="Targets" unique_id=406942365 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone21/BehaviorController" parent_id_path=PackedInt32Array(406942365, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone22" parent="Targets" unique_id=265117575 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone22/BehaviorController" parent_id_path=PackedInt32Array(265117575, 334432352) index="0" unique_id=1341184769]
-distance = 50000.0
-movement_speed = 377.0
-
-[node name="ScoutDrone23" parent="Targets" unique_id=1636015001 instance=ExtResource("10_xpbyc")]
-position = Vector2(2487, 364)
-activation_time = 3.0
-
-[node name="FlyDirectionBehavior" parent="Targets/ScoutDrone23/BehaviorController" parent_id_path=PackedInt32Array(1636015001, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone24" parent="Targets" unique_id=1903128478 instance=ExtResource("10_xpbyc")]
 position = Vector2(2750, 253)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone24" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone24/BehaviorController" parent_id_path=PackedInt32Array(1903128478, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -257,6 +301,10 @@ movement_speed = 377.0
 position = Vector2(2786, 484)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone25" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone25/BehaviorController" parent_id_path=PackedInt32Array(678601368, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -265,12 +313,20 @@ movement_speed = 377.0
 position = Vector2(2478, 126)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone26" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone26/BehaviorController" parent_id_path=PackedInt32Array(2048227598, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone27" parent="Targets" unique_id=1138531699 instance=ExtResource("10_xpbyc")]
 position = Vector2(2507, 541)
+
+[node name="HealthBar" parent="Targets/ScoutDrone27" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone27/BehaviorController" parent_id_path=PackedInt32Array(1138531699, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -280,6 +336,10 @@ movement_speed = 377.0
 position = Vector2(3166, 450)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone28" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone28/BehaviorController" parent_id_path=PackedInt32Array(400222981, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -287,6 +347,10 @@ movement_speed = 377.0
 [node name="ScoutDrone29" parent="Targets" unique_id=252427496 instance=ExtResource("10_xpbyc")]
 position = Vector2(3202, 839)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone29" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone29/BehaviorController" parent_id_path=PackedInt32Array(252427496, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -296,6 +360,10 @@ movement_speed = 377.0
 position = Vector2(3166, 450)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone30" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone30/BehaviorController" parent_id_path=PackedInt32Array(1410494819, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -303,6 +371,10 @@ movement_speed = 377.0
 [node name="ScoutDrone31" parent="Targets" unique_id=404239514 instance=ExtResource("10_xpbyc")]
 position = Vector2(3166, 450)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone31" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone31/BehaviorController" parent_id_path=PackedInt32Array(404239514, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -312,6 +384,10 @@ movement_speed = 377.0
 position = Vector2(3166, 450)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone32" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone32/BehaviorController" parent_id_path=PackedInt32Array(661777097, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -319,6 +395,10 @@ movement_speed = 377.0
 [node name="ScoutDrone33" parent="Targets" unique_id=1172655706 instance=ExtResource("10_xpbyc")]
 position = Vector2(3429, 339)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone33" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone33/BehaviorController" parent_id_path=PackedInt32Array(1172655706, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -328,6 +408,10 @@ movement_speed = 377.0
 position = Vector2(3465, 570)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone34" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone34/BehaviorController" parent_id_path=PackedInt32Array(1343249260, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -335,6 +419,10 @@ movement_speed = 377.0
 [node name="ScoutDrone35" parent="Targets" unique_id=1903756116 instance=ExtResource("10_xpbyc")]
 position = Vector2(3157, 212)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone35" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone35/BehaviorController" parent_id_path=PackedInt32Array(1903756116, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -344,6 +432,10 @@ movement_speed = 377.0
 position = Vector2(3186, 627)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone36" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone36/BehaviorController" parent_id_path=PackedInt32Array(644132659, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -351,6 +443,10 @@ movement_speed = 377.0
 [node name="ScoutDrone91" parent="Targets" unique_id=1046544299 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone91" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone91/BehaviorController" parent_id_path=PackedInt32Array(1046544299, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -360,6 +456,10 @@ movement_speed = 377.0
 position = Vector2(4390, 823)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone92" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone92/BehaviorController" parent_id_path=PackedInt32Array(1443163924, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -367,6 +467,10 @@ movement_speed = 377.0
 [node name="ScoutDrone93" parent="Targets" unique_id=1250850337 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone93" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone93/BehaviorController" parent_id_path=PackedInt32Array(1250850337, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -376,6 +480,10 @@ movement_speed = 377.0
 position = Vector2(4354, 434)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone94" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone94/BehaviorController" parent_id_path=PackedInt32Array(865315388, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -383,6 +491,10 @@ movement_speed = 377.0
 [node name="ScoutDrone95" parent="Targets" unique_id=287612474 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone95" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone95/BehaviorController" parent_id_path=PackedInt32Array(287612474, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -392,6 +504,10 @@ movement_speed = 377.0
 position = Vector2(4617, 323)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone96" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone96/BehaviorController" parent_id_path=PackedInt32Array(616731948, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -399,6 +515,10 @@ movement_speed = 377.0
 [node name="ScoutDrone97" parent="Targets" unique_id=1105816638 instance=ExtResource("10_xpbyc")]
 position = Vector2(4653, 554)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone97" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone97/BehaviorController" parent_id_path=PackedInt32Array(1105816638, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -408,12 +528,20 @@ movement_speed = 377.0
 position = Vector2(4345, 196)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone98" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone98/BehaviorController" parent_id_path=PackedInt32Array(1714693383, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone99" parent="Targets" unique_id=287672358 instance=ExtResource("10_xpbyc")]
 position = Vector2(4374, 611)
+
+[node name="HealthBar" parent="Targets/ScoutDrone99" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone99/BehaviorController" parent_id_path=PackedInt32Array(287672358, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -423,6 +551,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone100" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone100/BehaviorController" parent_id_path=PackedInt32Array(1990772201, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -430,6 +562,10 @@ movement_speed = 377.0
 [node name="ScoutDrone101" parent="Targets" unique_id=645589585 instance=ExtResource("10_xpbyc")]
 position = Vector2(5069, 909)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone101" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone101/BehaviorController" parent_id_path=PackedInt32Array(645589585, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -439,6 +575,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone102" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone102/BehaviorController" parent_id_path=PackedInt32Array(1882450589, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -446,6 +586,10 @@ movement_speed = 377.0
 [node name="ScoutDrone103" parent="Targets" unique_id=1305679866 instance=ExtResource("10_xpbyc")]
 position = Vector2(5033, 520)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone103" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone103/BehaviorController" parent_id_path=PackedInt32Array(1305679866, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -455,6 +599,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone104" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone104/BehaviorController" parent_id_path=PackedInt32Array(863554305, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -462,6 +610,10 @@ movement_speed = 377.0
 [node name="ScoutDrone105" parent="Targets" unique_id=309823985 instance=ExtResource("10_xpbyc")]
 position = Vector2(5296, 409)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone105" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone105/BehaviorController" parent_id_path=PackedInt32Array(309823985, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -471,6 +623,10 @@ movement_speed = 377.0
 position = Vector2(5332, 640)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone106" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone106/BehaviorController" parent_id_path=PackedInt32Array(153352411, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -478,6 +634,10 @@ movement_speed = 377.0
 [node name="ScoutDrone107" parent="Targets" unique_id=62550719 instance=ExtResource("10_xpbyc")]
 position = Vector2(5024, 282)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone107" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone107/BehaviorController" parent_id_path=PackedInt32Array(62550719, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -487,6 +647,10 @@ movement_speed = 377.0
 position = Vector2(5053, 697)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone108" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone108/BehaviorController" parent_id_path=PackedInt32Array(717580380, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -494,6 +658,10 @@ movement_speed = 377.0
 [node name="ScoutDrone109" parent="Targets" unique_id=984530977 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone109" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone109/BehaviorController" parent_id_path=PackedInt32Array(984530977, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -503,6 +671,10 @@ movement_speed = 377.0
 position = Vector2(4390, 823)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone110" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone110/BehaviorController" parent_id_path=PackedInt32Array(1335477151, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -510,6 +682,10 @@ movement_speed = 377.0
 [node name="ScoutDrone111" parent="Targets" unique_id=298320539 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone111" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone111/BehaviorController" parent_id_path=PackedInt32Array(298320539, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -519,6 +695,10 @@ movement_speed = 377.0
 position = Vector2(4354, 434)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone112" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone112/BehaviorController" parent_id_path=PackedInt32Array(407573198, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -526,6 +706,10 @@ movement_speed = 377.0
 [node name="ScoutDrone113" parent="Targets" unique_id=2075845086 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone113" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone113/BehaviorController" parent_id_path=PackedInt32Array(2075845086, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -535,6 +719,10 @@ movement_speed = 377.0
 position = Vector2(4617, 323)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone114" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone114/BehaviorController" parent_id_path=PackedInt32Array(1941464456, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -542,6 +730,10 @@ movement_speed = 377.0
 [node name="ScoutDrone115" parent="Targets" unique_id=1384225368 instance=ExtResource("10_xpbyc")]
 position = Vector2(4653, 554)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone115" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone115/BehaviorController" parent_id_path=PackedInt32Array(1384225368, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -551,12 +743,20 @@ movement_speed = 377.0
 position = Vector2(4345, 196)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone116" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone116/BehaviorController" parent_id_path=PackedInt32Array(2021122222, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone117" parent="Targets" unique_id=1561419687 instance=ExtResource("10_xpbyc")]
 position = Vector2(4374, 611)
+
+[node name="HealthBar" parent="Targets/ScoutDrone117" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone117/BehaviorController" parent_id_path=PackedInt32Array(1561419687, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -566,6 +766,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone118" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone118/BehaviorController" parent_id_path=PackedInt32Array(343670583, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -573,6 +777,10 @@ movement_speed = 377.0
 [node name="ScoutDrone119" parent="Targets" unique_id=22016856 instance=ExtResource("10_xpbyc")]
 position = Vector2(5069, 909)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone119" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone119/BehaviorController" parent_id_path=PackedInt32Array(22016856, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -582,6 +790,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone120" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone120/BehaviorController" parent_id_path=PackedInt32Array(601200368, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -589,6 +801,10 @@ movement_speed = 377.0
 [node name="ScoutDrone121" parent="Targets" unique_id=2094131484 instance=ExtResource("10_xpbyc")]
 position = Vector2(5033, 520)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone121" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone121/BehaviorController" parent_id_path=PackedInt32Array(2094131484, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -598,6 +814,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone122" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone122/BehaviorController" parent_id_path=PackedInt32Array(501116932, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -605,6 +825,10 @@ movement_speed = 377.0
 [node name="ScoutDrone123" parent="Targets" unique_id=1896715877 instance=ExtResource("10_xpbyc")]
 position = Vector2(5296, 409)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone123" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone123/BehaviorController" parent_id_path=PackedInt32Array(1896715877, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -614,6 +838,10 @@ movement_speed = 377.0
 position = Vector2(5332, 640)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone124" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone124/BehaviorController" parent_id_path=PackedInt32Array(1152208587, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -621,6 +849,10 @@ movement_speed = 377.0
 [node name="ScoutDrone125" parent="Targets" unique_id=1033148911 instance=ExtResource("10_xpbyc")]
 position = Vector2(5024, 282)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone125" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone125/BehaviorController" parent_id_path=PackedInt32Array(1033148911, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -630,6 +862,10 @@ movement_speed = 377.0
 position = Vector2(5053, 697)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone126" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone126/BehaviorController" parent_id_path=PackedInt32Array(448297103, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -637,6 +873,10 @@ movement_speed = 377.0
 [node name="ScoutDrone127" parent="Targets" unique_id=1281818639 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone127" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone127/BehaviorController" parent_id_path=PackedInt32Array(1281818639, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -646,6 +886,10 @@ movement_speed = 377.0
 position = Vector2(4390, 823)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone128" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone128/BehaviorController" parent_id_path=PackedInt32Array(510809198, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -653,6 +897,10 @@ movement_speed = 377.0
 [node name="ScoutDrone129" parent="Targets" unique_id=805318151 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone129" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone129/BehaviorController" parent_id_path=PackedInt32Array(805318151, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -662,6 +910,10 @@ movement_speed = 377.0
 position = Vector2(4354, 434)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone130" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone130/BehaviorController" parent_id_path=PackedInt32Array(253824077, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -669,6 +921,10 @@ movement_speed = 377.0
 [node name="ScoutDrone131" parent="Targets" unique_id=800653247 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone131" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone131/BehaviorController" parent_id_path=PackedInt32Array(800653247, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -678,6 +934,10 @@ movement_speed = 377.0
 position = Vector2(4617, 323)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone132" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone132/BehaviorController" parent_id_path=PackedInt32Array(61222491, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -685,6 +945,10 @@ movement_speed = 377.0
 [node name="ScoutDrone133" parent="Targets" unique_id=747228338 instance=ExtResource("10_xpbyc")]
 position = Vector2(4653, 554)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone133" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone133/BehaviorController" parent_id_path=PackedInt32Array(747228338, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -694,12 +958,20 @@ movement_speed = 377.0
 position = Vector2(4345, 196)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone134" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone134/BehaviorController" parent_id_path=PackedInt32Array(1360392853, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone135" parent="Targets" unique_id=632404096 instance=ExtResource("10_xpbyc")]
 position = Vector2(4374, 611)
+
+[node name="HealthBar" parent="Targets/ScoutDrone135" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone135/BehaviorController" parent_id_path=PackedInt32Array(632404096, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -709,6 +981,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone136" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone136/BehaviorController" parent_id_path=PackedInt32Array(618455617, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -716,6 +992,10 @@ movement_speed = 377.0
 [node name="ScoutDrone137" parent="Targets" unique_id=1426890011 instance=ExtResource("10_xpbyc")]
 position = Vector2(5069, 909)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone137" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone137/BehaviorController" parent_id_path=PackedInt32Array(1426890011, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -725,6 +1005,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone138" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone138/BehaviorController" parent_id_path=PackedInt32Array(401795142, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -732,6 +1016,10 @@ movement_speed = 377.0
 [node name="ScoutDrone139" parent="Targets" unique_id=435182573 instance=ExtResource("10_xpbyc")]
 position = Vector2(5033, 520)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone139" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone139/BehaviorController" parent_id_path=PackedInt32Array(435182573, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -741,6 +1029,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone140" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone140/BehaviorController" parent_id_path=PackedInt32Array(1857077101, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -748,6 +1040,10 @@ movement_speed = 377.0
 [node name="ScoutDrone141" parent="Targets" unique_id=1199507943 instance=ExtResource("10_xpbyc")]
 position = Vector2(5296, 409)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone141" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone141/BehaviorController" parent_id_path=PackedInt32Array(1199507943, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -757,6 +1053,10 @@ movement_speed = 377.0
 position = Vector2(5332, 640)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone142" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone142/BehaviorController" parent_id_path=PackedInt32Array(663862654, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -764,6 +1064,10 @@ movement_speed = 377.0
 [node name="ScoutDrone143" parent="Targets" unique_id=520119213 instance=ExtResource("10_xpbyc")]
 position = Vector2(5024, 282)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone143" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone143/BehaviorController" parent_id_path=PackedInt32Array(520119213, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -773,6 +1077,10 @@ movement_speed = 377.0
 position = Vector2(5053, 697)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone144" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone144/BehaviorController" parent_id_path=PackedInt32Array(623072287, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -780,6 +1088,10 @@ movement_speed = 377.0
 [node name="ScoutDrone145" parent="Targets" unique_id=407289961 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone145" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone145/BehaviorController" parent_id_path=PackedInt32Array(407289961, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -789,6 +1101,10 @@ movement_speed = 377.0
 position = Vector2(4390, 823)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone146" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone146/BehaviorController" parent_id_path=PackedInt32Array(503892615, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -796,6 +1112,10 @@ movement_speed = 377.0
 [node name="ScoutDrone147" parent="Targets" unique_id=1328295487 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone147" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone147/BehaviorController" parent_id_path=PackedInt32Array(1328295487, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -805,6 +1125,10 @@ movement_speed = 377.0
 position = Vector2(4354, 434)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone148" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone148/BehaviorController" parent_id_path=PackedInt32Array(1245280850, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -812,6 +1136,10 @@ movement_speed = 377.0
 [node name="ScoutDrone149" parent="Targets" unique_id=392771866 instance=ExtResource("10_xpbyc")]
 position = Vector2(4354, 434)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone149" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone149/BehaviorController" parent_id_path=PackedInt32Array(392771866, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -821,6 +1149,10 @@ movement_speed = 377.0
 position = Vector2(4617, 323)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone150" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone150/BehaviorController" parent_id_path=PackedInt32Array(956448912, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -828,6 +1160,10 @@ movement_speed = 377.0
 [node name="ScoutDrone151" parent="Targets" unique_id=1730860651 instance=ExtResource("10_xpbyc")]
 position = Vector2(4653, 554)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone151" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone151/BehaviorController" parent_id_path=PackedInt32Array(1730860651, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -837,12 +1173,20 @@ movement_speed = 377.0
 position = Vector2(4345, 196)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone152" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone152/BehaviorController" parent_id_path=PackedInt32Array(833073436, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone153" parent="Targets" unique_id=1828299300 instance=ExtResource("10_xpbyc")]
 position = Vector2(4374, 611)
+
+[node name="HealthBar" parent="Targets/ScoutDrone153" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone153/BehaviorController" parent_id_path=PackedInt32Array(1828299300, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -852,6 +1196,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone154" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone154/BehaviorController" parent_id_path=PackedInt32Array(434080764, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -859,6 +1207,10 @@ movement_speed = 377.0
 [node name="ScoutDrone155" parent="Targets" unique_id=2072340062 instance=ExtResource("10_xpbyc")]
 position = Vector2(5069, 909)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone155" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone155/BehaviorController" parent_id_path=PackedInt32Array(2072340062, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -868,6 +1220,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone156" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone156/BehaviorController" parent_id_path=PackedInt32Array(1459301361, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -875,6 +1231,10 @@ movement_speed = 377.0
 [node name="ScoutDrone157" parent="Targets" unique_id=612732739 instance=ExtResource("10_xpbyc")]
 position = Vector2(5033, 520)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone157" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone157/BehaviorController" parent_id_path=PackedInt32Array(612732739, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -884,6 +1244,10 @@ movement_speed = 377.0
 position = Vector2(5033, 520)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone158" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone158/BehaviorController" parent_id_path=PackedInt32Array(825127096, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -891,6 +1255,10 @@ movement_speed = 377.0
 [node name="ScoutDrone159" parent="Targets" unique_id=2126074868 instance=ExtResource("10_xpbyc")]
 position = Vector2(5296, 409)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone159" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone159/BehaviorController" parent_id_path=PackedInt32Array(2126074868, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -900,6 +1268,10 @@ movement_speed = 377.0
 position = Vector2(5332, 640)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone160" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone160/BehaviorController" parent_id_path=PackedInt32Array(1598588356, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -907,6 +1279,10 @@ movement_speed = 377.0
 [node name="ScoutDrone161" parent="Targets" unique_id=1467279874 instance=ExtResource("10_xpbyc")]
 position = Vector2(5024, 282)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone161" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone161/BehaviorController" parent_id_path=PackedInt32Array(1467279874, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -916,6 +1292,10 @@ movement_speed = 377.0
 position = Vector2(5053, 697)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone162" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone162/BehaviorController" parent_id_path=PackedInt32Array(1676833339, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -923,6 +1303,10 @@ movement_speed = 377.0
 [node name="ScoutDrone163" parent="Targets" unique_id=2140913299 instance=ExtResource("10_xpbyc")]
 position = Vector2(3743, 382)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone163" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone163/BehaviorController" parent_id_path=PackedInt32Array(2140913299, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -932,6 +1316,10 @@ movement_speed = 377.0
 position = Vector2(3779, 771)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone164" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone164/BehaviorController" parent_id_path=PackedInt32Array(1019290105, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -939,6 +1327,10 @@ movement_speed = 377.0
 [node name="ScoutDrone165" parent="Targets" unique_id=415238817 instance=ExtResource("10_xpbyc")]
 position = Vector2(3743, 382)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone165" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone165/BehaviorController" parent_id_path=PackedInt32Array(415238817, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -948,6 +1340,10 @@ movement_speed = 377.0
 position = Vector2(3743, 382)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone166" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone166/BehaviorController" parent_id_path=PackedInt32Array(674569521, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -955,6 +1351,10 @@ movement_speed = 377.0
 [node name="ScoutDrone167" parent="Targets" unique_id=809310351 instance=ExtResource("10_xpbyc")]
 position = Vector2(3743, 382)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone167" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone167/BehaviorController" parent_id_path=PackedInt32Array(809310351, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -964,6 +1364,10 @@ movement_speed = 377.0
 position = Vector2(4006, 271)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone168" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone168/BehaviorController" parent_id_path=PackedInt32Array(1249091031, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -971,6 +1375,10 @@ movement_speed = 377.0
 [node name="ScoutDrone169" parent="Targets" unique_id=1331549595 instance=ExtResource("10_xpbyc")]
 position = Vector2(4042, 502)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone169" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone169/BehaviorController" parent_id_path=PackedInt32Array(1331549595, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -980,12 +1388,20 @@ movement_speed = 377.0
 position = Vector2(3734, 144)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone170" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone170/BehaviorController" parent_id_path=PackedInt32Array(701587725, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone171" parent="Targets" unique_id=1599456398 instance=ExtResource("10_xpbyc")]
 position = Vector2(3763, 559)
+
+[node name="HealthBar" parent="Targets/ScoutDrone171" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone171/BehaviorController" parent_id_path=PackedInt32Array(1599456398, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -995,6 +1411,10 @@ movement_speed = 377.0
 position = Vector2(4422, 468)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone172" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone172/BehaviorController" parent_id_path=PackedInt32Array(711575262, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1002,6 +1422,10 @@ movement_speed = 377.0
 [node name="ScoutDrone173" parent="Targets" unique_id=1843560765 instance=ExtResource("10_xpbyc")]
 position = Vector2(4458, 857)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone173" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone173/BehaviorController" parent_id_path=PackedInt32Array(1843560765, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1011,6 +1435,10 @@ movement_speed = 377.0
 position = Vector2(4422, 468)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone174" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone174/BehaviorController" parent_id_path=PackedInt32Array(1999011197, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1018,6 +1446,10 @@ movement_speed = 377.0
 [node name="ScoutDrone175" parent="Targets" unique_id=1880369634 instance=ExtResource("10_xpbyc")]
 position = Vector2(4422, 468)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone175" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone175/BehaviorController" parent_id_path=PackedInt32Array(1880369634, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1027,6 +1459,10 @@ movement_speed = 377.0
 position = Vector2(4422, 468)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone176" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone176/BehaviorController" parent_id_path=PackedInt32Array(1295201854, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1034,6 +1470,10 @@ movement_speed = 377.0
 [node name="ScoutDrone177" parent="Targets" unique_id=826036507 instance=ExtResource("10_xpbyc")]
 position = Vector2(4685, 357)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone177" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone177/BehaviorController" parent_id_path=PackedInt32Array(826036507, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1043,6 +1483,10 @@ movement_speed = 377.0
 position = Vector2(4721, 588)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone178" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone178/BehaviorController" parent_id_path=PackedInt32Array(1791515382, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1050,6 +1494,10 @@ movement_speed = 377.0
 [node name="ScoutDrone179" parent="Targets" unique_id=1078680382 instance=ExtResource("10_xpbyc")]
 position = Vector2(4413, 230)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone179" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone179/BehaviorController" parent_id_path=PackedInt32Array(1078680382, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1059,6 +1507,10 @@ movement_speed = 377.0
 position = Vector2(4442, 645)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone180" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone180/BehaviorController" parent_id_path=PackedInt32Array(2083940582, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1066,6 +1518,10 @@ movement_speed = 377.0
 [node name="ScoutDrone181" parent="Targets" unique_id=1518510247 instance=ExtResource("10_xpbyc")]
 position = Vector2(3743, 382)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone181" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone181/BehaviorController" parent_id_path=PackedInt32Array(1518510247, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1075,6 +1531,10 @@ movement_speed = 377.0
 position = Vector2(3779, 771)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone182" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone182/BehaviorController" parent_id_path=PackedInt32Array(338930643, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1082,6 +1542,10 @@ movement_speed = 377.0
 [node name="ScoutDrone183" parent="Targets" unique_id=2065529615 instance=ExtResource("10_xpbyc")]
 position = Vector2(3743, 382)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone183" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone183/BehaviorController" parent_id_path=PackedInt32Array(2065529615, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1091,6 +1555,10 @@ movement_speed = 377.0
 position = Vector2(3743, 382)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone184" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone184/BehaviorController" parent_id_path=PackedInt32Array(1530698461, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1098,6 +1566,10 @@ movement_speed = 377.0
 [node name="ScoutDrone185" parent="Targets" unique_id=1884072008 instance=ExtResource("10_xpbyc")]
 position = Vector2(3743, 382)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone185" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone185/BehaviorController" parent_id_path=PackedInt32Array(1884072008, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1107,6 +1579,10 @@ movement_speed = 377.0
 position = Vector2(4006, 271)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone186" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone186/BehaviorController" parent_id_path=PackedInt32Array(1561647813, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1114,6 +1590,10 @@ movement_speed = 377.0
 [node name="ScoutDrone187" parent="Targets" unique_id=1974830542 instance=ExtResource("10_xpbyc")]
 position = Vector2(4042, 502)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone187" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone187/BehaviorController" parent_id_path=PackedInt32Array(1974830542, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1123,12 +1603,20 @@ movement_speed = 377.0
 position = Vector2(3734, 144)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone188" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone188/BehaviorController" parent_id_path=PackedInt32Array(1219261041, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone189" parent="Targets" unique_id=943534739 instance=ExtResource("10_xpbyc")]
 position = Vector2(3763, 559)
+
+[node name="HealthBar" parent="Targets/ScoutDrone189" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone189/BehaviorController" parent_id_path=PackedInt32Array(943534739, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1138,6 +1626,10 @@ movement_speed = 377.0
 position = Vector2(4422, 468)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone190" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone190/BehaviorController" parent_id_path=PackedInt32Array(1161133643, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1145,6 +1637,10 @@ movement_speed = 377.0
 [node name="ScoutDrone191" parent="Targets" unique_id=762108507 instance=ExtResource("10_xpbyc")]
 position = Vector2(4458, 857)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone191" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone191/BehaviorController" parent_id_path=PackedInt32Array(762108507, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1154,6 +1650,10 @@ movement_speed = 377.0
 position = Vector2(4422, 468)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone192" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone192/BehaviorController" parent_id_path=PackedInt32Array(466860618, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1161,6 +1661,10 @@ movement_speed = 377.0
 [node name="ScoutDrone193" parent="Targets" unique_id=292875993 instance=ExtResource("10_xpbyc")]
 position = Vector2(4422, 468)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone193" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone193/BehaviorController" parent_id_path=PackedInt32Array(292875993, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1170,6 +1674,10 @@ movement_speed = 377.0
 position = Vector2(4422, 468)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone194" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone194/BehaviorController" parent_id_path=PackedInt32Array(1961874692, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1177,6 +1685,10 @@ movement_speed = 377.0
 [node name="ScoutDrone195" parent="Targets" unique_id=1776774063 instance=ExtResource("10_xpbyc")]
 position = Vector2(4685, 357)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone195" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone195/BehaviorController" parent_id_path=PackedInt32Array(1776774063, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1186,6 +1698,10 @@ movement_speed = 377.0
 position = Vector2(4721, 588)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone196" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone196/BehaviorController" parent_id_path=PackedInt32Array(410961805, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1193,6 +1709,10 @@ movement_speed = 377.0
 [node name="ScoutDrone197" parent="Targets" unique_id=1867269912 instance=ExtResource("10_xpbyc")]
 position = Vector2(4413, 230)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone197" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone197/BehaviorController" parent_id_path=PackedInt32Array(1867269912, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1202,6 +1722,10 @@ movement_speed = 377.0
 position = Vector2(4442, 645)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone198" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone198/BehaviorController" parent_id_path=PackedInt32Array(477395455, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1209,6 +1733,10 @@ movement_speed = 377.0
 [node name="ScoutDrone199" parent="Targets" unique_id=2076933519 instance=ExtResource("10_xpbyc")]
 position = Vector2(9387, 498)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone199" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone199/BehaviorController" parent_id_path=PackedInt32Array(2076933519, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1218,6 +1746,10 @@ movement_speed = 377.0
 position = Vector2(9423, 887)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone200" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone200/BehaviorController" parent_id_path=PackedInt32Array(2003542331, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1225,6 +1757,10 @@ movement_speed = 377.0
 [node name="ScoutDrone201" parent="Targets" unique_id=648586688 instance=ExtResource("10_xpbyc")]
 position = Vector2(9387, 498)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone201" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone201/BehaviorController" parent_id_path=PackedInt32Array(648586688, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1234,6 +1770,10 @@ movement_speed = 377.0
 position = Vector2(9387, 498)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone202" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone202/BehaviorController" parent_id_path=PackedInt32Array(669347360, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1241,6 +1781,10 @@ movement_speed = 377.0
 [node name="ScoutDrone203" parent="Targets" unique_id=160190681 instance=ExtResource("10_xpbyc")]
 position = Vector2(9387, 498)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone203" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone203/BehaviorController" parent_id_path=PackedInt32Array(160190681, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1250,6 +1794,10 @@ movement_speed = 377.0
 position = Vector2(9650, 387)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone204" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone204/BehaviorController" parent_id_path=PackedInt32Array(2102636885, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1257,6 +1805,10 @@ movement_speed = 377.0
 [node name="ScoutDrone205" parent="Targets" unique_id=1797125803 instance=ExtResource("10_xpbyc")]
 position = Vector2(9686, 618)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone205" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone205/BehaviorController" parent_id_path=PackedInt32Array(1797125803, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1266,12 +1818,20 @@ movement_speed = 377.0
 position = Vector2(9378, 260)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone206" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone206/BehaviorController" parent_id_path=PackedInt32Array(1471213232, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone207" parent="Targets" unique_id=549260735 instance=ExtResource("10_xpbyc")]
 position = Vector2(9407, 675)
+
+[node name="HealthBar" parent="Targets/ScoutDrone207" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone207/BehaviorController" parent_id_path=PackedInt32Array(549260735, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1281,6 +1841,10 @@ movement_speed = 377.0
 position = Vector2(10066, 584)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone208" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone208/BehaviorController" parent_id_path=PackedInt32Array(1796696744, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1288,6 +1852,10 @@ movement_speed = 377.0
 [node name="ScoutDrone209" parent="Targets" unique_id=1867817402 instance=ExtResource("10_xpbyc")]
 position = Vector2(10102, 973)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone209" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone209/BehaviorController" parent_id_path=PackedInt32Array(1867817402, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1297,6 +1865,10 @@ movement_speed = 377.0
 position = Vector2(10066, 584)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone210" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone210/BehaviorController" parent_id_path=PackedInt32Array(25353824, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1304,6 +1876,10 @@ movement_speed = 377.0
 [node name="ScoutDrone211" parent="Targets" unique_id=945331589 instance=ExtResource("10_xpbyc")]
 position = Vector2(10066, 584)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone211" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone211/BehaviorController" parent_id_path=PackedInt32Array(945331589, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1313,6 +1889,10 @@ movement_speed = 377.0
 position = Vector2(10066, 584)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone212" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone212/BehaviorController" parent_id_path=PackedInt32Array(1976994110, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1320,6 +1900,10 @@ movement_speed = 377.0
 [node name="ScoutDrone213" parent="Targets" unique_id=851897617 instance=ExtResource("10_xpbyc")]
 position = Vector2(10329, 473)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone213" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone213/BehaviorController" parent_id_path=PackedInt32Array(851897617, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1329,6 +1913,10 @@ movement_speed = 377.0
 position = Vector2(10365, 704)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone214" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone214/BehaviorController" parent_id_path=PackedInt32Array(1867248531, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1336,6 +1924,10 @@ movement_speed = 377.0
 [node name="ScoutDrone215" parent="Targets" unique_id=1564852023 instance=ExtResource("10_xpbyc")]
 position = Vector2(10057, 346)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone215" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone215/BehaviorController" parent_id_path=PackedInt32Array(1564852023, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1345,6 +1937,10 @@ movement_speed = 377.0
 position = Vector2(10086, 761)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone216" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone216/BehaviorController" parent_id_path=PackedInt32Array(2063945342, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1352,6 +1948,10 @@ movement_speed = 377.0
 [node name="ScoutDrone217" parent="Targets" unique_id=723150977 instance=ExtResource("10_xpbyc")]
 position = Vector2(9387, 498)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone217" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone217/BehaviorController" parent_id_path=PackedInt32Array(723150977, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1361,6 +1961,10 @@ movement_speed = 377.0
 position = Vector2(9423, 887)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone218" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone218/BehaviorController" parent_id_path=PackedInt32Array(1377293232, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1368,6 +1972,10 @@ movement_speed = 377.0
 [node name="ScoutDrone219" parent="Targets" unique_id=1064590004 instance=ExtResource("10_xpbyc")]
 position = Vector2(9387, 498)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone219" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone219/BehaviorController" parent_id_path=PackedInt32Array(1064590004, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1377,6 +1985,10 @@ movement_speed = 377.0
 position = Vector2(9387, 498)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone220" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone220/BehaviorController" parent_id_path=PackedInt32Array(1804923655, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1384,6 +1996,10 @@ movement_speed = 377.0
 [node name="ScoutDrone221" parent="Targets" unique_id=1400006798 instance=ExtResource("10_xpbyc")]
 position = Vector2(9387, 498)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone221" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone221/BehaviorController" parent_id_path=PackedInt32Array(1400006798, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1393,6 +2009,10 @@ movement_speed = 377.0
 position = Vector2(9650, 387)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone222" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone222/BehaviorController" parent_id_path=PackedInt32Array(2118955991, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1400,6 +2020,10 @@ movement_speed = 377.0
 [node name="ScoutDrone223" parent="Targets" unique_id=2021902160 instance=ExtResource("10_xpbyc")]
 position = Vector2(9686, 618)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone223" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone223/BehaviorController" parent_id_path=PackedInt32Array(2021902160, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1409,12 +2033,20 @@ movement_speed = 377.0
 position = Vector2(9378, 260)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone224" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone224/BehaviorController" parent_id_path=PackedInt32Array(1657940281, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
 
 [node name="ScoutDrone225" parent="Targets" unique_id=1277323766 instance=ExtResource("10_xpbyc")]
 position = Vector2(9407, 675)
+
+[node name="HealthBar" parent="Targets/ScoutDrone225" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone225/BehaviorController" parent_id_path=PackedInt32Array(1277323766, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1424,6 +2056,10 @@ movement_speed = 377.0
 position = Vector2(10066, 584)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone226" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone226/BehaviorController" parent_id_path=PackedInt32Array(781860290, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1431,6 +2067,10 @@ movement_speed = 377.0
 [node name="ScoutDrone227" parent="Targets" unique_id=657836525 instance=ExtResource("10_xpbyc")]
 position = Vector2(10102, 973)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone227" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone227/BehaviorController" parent_id_path=PackedInt32Array(657836525, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1440,6 +2080,10 @@ movement_speed = 377.0
 position = Vector2(10066, 584)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone228" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone228/BehaviorController" parent_id_path=PackedInt32Array(149975871, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1447,6 +2091,10 @@ movement_speed = 377.0
 [node name="ScoutDrone229" parent="Targets" unique_id=1883596027 instance=ExtResource("10_xpbyc")]
 position = Vector2(10066, 584)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone229" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone229/BehaviorController" parent_id_path=PackedInt32Array(1883596027, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1456,6 +2104,10 @@ movement_speed = 377.0
 position = Vector2(10066, 584)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone230" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone230/BehaviorController" parent_id_path=PackedInt32Array(1438598338, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1463,6 +2115,10 @@ movement_speed = 377.0
 [node name="ScoutDrone231" parent="Targets" unique_id=2056795834 instance=ExtResource("10_xpbyc")]
 position = Vector2(10329, 473)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone231" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone231/BehaviorController" parent_id_path=PackedInt32Array(2056795834, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1472,6 +2128,10 @@ movement_speed = 377.0
 position = Vector2(10365, 704)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone232" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone232/BehaviorController" parent_id_path=PackedInt32Array(750464769, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1479,6 +2139,10 @@ movement_speed = 377.0
 [node name="ScoutDrone233" parent="Targets" unique_id=75446440 instance=ExtResource("10_xpbyc")]
 position = Vector2(10057, 346)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone233" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone233/BehaviorController" parent_id_path=PackedInt32Array(75446440, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
@@ -1488,6 +2152,10 @@ movement_speed = 377.0
 position = Vector2(10086, 761)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone234" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone234/BehaviorController" parent_id_path=PackedInt32Array(728930792, 334432352) index="0" unique_id=1341184769]
 distance = 50000.0
 movement_speed = 377.0
@@ -1495,6 +2163,10 @@ movement_speed = 377.0
 [node name="ScoutDrone37" parent="Targets" unique_id=901025289 instance=ExtResource("10_xpbyc")]
 position = Vector2(-2018, 409)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone37" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone37/BehaviorController" parent_id_path=PackedInt32Array(901025289, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1505,6 +2177,10 @@ movement_speed = 377.0
 position = Vector2(-1982, 798)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone38" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone38/BehaviorController" parent_id_path=PackedInt32Array(1244213680, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1513,6 +2189,10 @@ movement_speed = 377.0
 [node name="ScoutDrone39" parent="Targets" unique_id=900191749 instance=ExtResource("10_xpbyc")]
 position = Vector2(-2018, 409)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone39" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone39/BehaviorController" parent_id_path=PackedInt32Array(900191749, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1523,6 +2203,10 @@ movement_speed = 377.0
 position = Vector2(-2018, 409)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone40" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone40/BehaviorController" parent_id_path=PackedInt32Array(572115887, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1531,6 +2215,10 @@ movement_speed = 377.0
 [node name="ScoutDrone41" parent="Targets" unique_id=547635733 instance=ExtResource("10_xpbyc")]
 position = Vector2(-2018, 409)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone41" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone41/BehaviorController" parent_id_path=PackedInt32Array(547635733, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1541,6 +2229,10 @@ movement_speed = 377.0
 position = Vector2(-1755, 298)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone42" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone42/BehaviorController" parent_id_path=PackedInt32Array(1905590837, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1549,6 +2241,10 @@ movement_speed = 377.0
 [node name="ScoutDrone43" parent="Targets" unique_id=1423770163 instance=ExtResource("10_xpbyc")]
 position = Vector2(-1719, 529)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone43" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone43/BehaviorController" parent_id_path=PackedInt32Array(1423770163, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1559,6 +2255,10 @@ movement_speed = 377.0
 position = Vector2(-2027, 171)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone44" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone44/BehaviorController" parent_id_path=PackedInt32Array(1942590526, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1566,6 +2266,10 @@ movement_speed = 377.0
 
 [node name="ScoutDrone45" parent="Targets" unique_id=1325290344 instance=ExtResource("10_xpbyc")]
 position = Vector2(-1998, 586)
+
+[node name="HealthBar" parent="Targets/ScoutDrone45" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone45/BehaviorController" parent_id_path=PackedInt32Array(1325290344, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1576,6 +2280,10 @@ movement_speed = 377.0
 position = Vector2(-1339, 495)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone46" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone46/BehaviorController" parent_id_path=PackedInt32Array(430655, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1584,6 +2292,10 @@ movement_speed = 377.0
 [node name="ScoutDrone47" parent="Targets" unique_id=390445087 instance=ExtResource("10_xpbyc")]
 position = Vector2(-1303, 884)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone47" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone47/BehaviorController" parent_id_path=PackedInt32Array(390445087, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1594,6 +2306,10 @@ movement_speed = 377.0
 position = Vector2(-1339, 495)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone48" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone48/BehaviorController" parent_id_path=PackedInt32Array(1060836543, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1602,6 +2318,10 @@ movement_speed = 377.0
 [node name="ScoutDrone49" parent="Targets" unique_id=390646532 instance=ExtResource("10_xpbyc")]
 position = Vector2(-1339, 495)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone49" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone49/BehaviorController" parent_id_path=PackedInt32Array(390646532, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1612,6 +2332,10 @@ movement_speed = 377.0
 position = Vector2(-1339, 495)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone50" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone50/BehaviorController" parent_id_path=PackedInt32Array(321604281, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1620,6 +2344,10 @@ movement_speed = 377.0
 [node name="ScoutDrone51" parent="Targets" unique_id=146897239 instance=ExtResource("10_xpbyc")]
 position = Vector2(-1076, 384)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone51" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone51/BehaviorController" parent_id_path=PackedInt32Array(146897239, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1630,6 +2358,10 @@ movement_speed = 377.0
 position = Vector2(-1040, 615)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone52" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone52/BehaviorController" parent_id_path=PackedInt32Array(1365441455, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1638,6 +2370,10 @@ movement_speed = 377.0
 [node name="ScoutDrone53" parent="Targets" unique_id=743973695 instance=ExtResource("10_xpbyc")]
 position = Vector2(-1348, 257)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone53" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone53/BehaviorController" parent_id_path=PackedInt32Array(743973695, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1648,6 +2384,10 @@ movement_speed = 377.0
 position = Vector2(-1319, 672)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone54" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone54/BehaviorController" parent_id_path=PackedInt32Array(1928447644, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1656,6 +2396,10 @@ movement_speed = 377.0
 [node name="ScoutDrone55" parent="Targets" unique_id=732573908 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5299, 272)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone55" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone55/BehaviorController" parent_id_path=PackedInt32Array(732573908, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1666,6 +2410,10 @@ movement_speed = 377.0
 position = Vector2(-5263, 661)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone56" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone56/BehaviorController" parent_id_path=PackedInt32Array(1843976110, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1674,6 +2422,10 @@ movement_speed = 377.0
 [node name="ScoutDrone57" parent="Targets" unique_id=1328793493 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5299, 272)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone57" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone57/BehaviorController" parent_id_path=PackedInt32Array(1328793493, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1684,6 +2436,10 @@ movement_speed = 377.0
 position = Vector2(-5299, 272)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone58" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone58/BehaviorController" parent_id_path=PackedInt32Array(1032952599, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1692,6 +2448,10 @@ movement_speed = 377.0
 [node name="ScoutDrone59" parent="Targets" unique_id=1563116083 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5299, 272)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone59" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone59/BehaviorController" parent_id_path=PackedInt32Array(1563116083, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1702,6 +2462,10 @@ movement_speed = 377.0
 position = Vector2(-5036, 161)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone60" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone60/BehaviorController" parent_id_path=PackedInt32Array(181008413, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1710,6 +2474,10 @@ movement_speed = 377.0
 [node name="ScoutDrone61" parent="Targets" unique_id=1331983387 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5000, 392)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone61" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone61/BehaviorController" parent_id_path=PackedInt32Array(1331983387, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1720,6 +2488,10 @@ movement_speed = 377.0
 position = Vector2(-5308, 34)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone62" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone62/BehaviorController" parent_id_path=PackedInt32Array(1490420071, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1727,6 +2499,10 @@ movement_speed = 377.0
 
 [node name="ScoutDrone63" parent="Targets" unique_id=163625832 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5279, 449)
+
+[node name="HealthBar" parent="Targets/ScoutDrone63" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone63/BehaviorController" parent_id_path=PackedInt32Array(163625832, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1737,6 +2513,10 @@ movement_speed = 377.0
 position = Vector2(-4620, 358)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone64" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone64/BehaviorController" parent_id_path=PackedInt32Array(370840424, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1745,6 +2525,10 @@ movement_speed = 377.0
 [node name="ScoutDrone65" parent="Targets" unique_id=910224987 instance=ExtResource("10_xpbyc")]
 position = Vector2(-4584, 747)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone65" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone65/BehaviorController" parent_id_path=PackedInt32Array(910224987, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1755,6 +2539,10 @@ movement_speed = 377.0
 position = Vector2(-4620, 358)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone66" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone66/BehaviorController" parent_id_path=PackedInt32Array(1411956238, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1763,6 +2551,10 @@ movement_speed = 377.0
 [node name="ScoutDrone67" parent="Targets" unique_id=1847310853 instance=ExtResource("10_xpbyc")]
 position = Vector2(-4620, 358)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone67" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone67/BehaviorController" parent_id_path=PackedInt32Array(1847310853, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1773,6 +2565,10 @@ movement_speed = 377.0
 position = Vector2(-4620, 358)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone68" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone68/BehaviorController" parent_id_path=PackedInt32Array(1842476309, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1781,6 +2577,10 @@ movement_speed = 377.0
 [node name="ScoutDrone69" parent="Targets" unique_id=955809389 instance=ExtResource("10_xpbyc")]
 position = Vector2(-4357, 247)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone69" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone69/BehaviorController" parent_id_path=PackedInt32Array(955809389, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1791,6 +2591,10 @@ movement_speed = 377.0
 position = Vector2(-4321, 478)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone70" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone70/BehaviorController" parent_id_path=PackedInt32Array(1559160623, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1799,6 +2603,10 @@ movement_speed = 377.0
 [node name="ScoutDrone71" parent="Targets" unique_id=105507865 instance=ExtResource("10_xpbyc")]
 position = Vector2(-4629, 120)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone71" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone71/BehaviorController" parent_id_path=PackedInt32Array(105507865, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1809,6 +2617,10 @@ movement_speed = 377.0
 position = Vector2(-4600, 535)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone72" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone72/BehaviorController" parent_id_path=PackedInt32Array(157729493, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1817,6 +2629,10 @@ movement_speed = 377.0
 [node name="ScoutDrone73" parent="Targets" unique_id=1128442899 instance=ExtResource("10_xpbyc")]
 position = Vector2(-6504, 183)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone73" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone73/BehaviorController" parent_id_path=PackedInt32Array(1128442899, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1827,6 +2643,10 @@ movement_speed = 377.0
 position = Vector2(-6468, 572)
 activation_time = 2.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone74" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone74/BehaviorController" parent_id_path=PackedInt32Array(111879813, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1835,6 +2655,10 @@ movement_speed = 377.0
 [node name="ScoutDrone75" parent="Targets" unique_id=1045708646 instance=ExtResource("10_xpbyc")]
 position = Vector2(-6504, 183)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone75" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone75/BehaviorController" parent_id_path=PackedInt32Array(1045708646, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1845,6 +2669,10 @@ movement_speed = 377.0
 position = Vector2(-6504, 183)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone76" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone76/BehaviorController" parent_id_path=PackedInt32Array(550026232, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1853,6 +2681,10 @@ movement_speed = 377.0
 [node name="ScoutDrone77" parent="Targets" unique_id=1651631398 instance=ExtResource("10_xpbyc")]
 position = Vector2(-6504, 183)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone77" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone77/BehaviorController" parent_id_path=PackedInt32Array(1651631398, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1863,6 +2695,10 @@ movement_speed = 377.0
 position = Vector2(-6241, 72)
 activation_time = 3.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone78" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone78/BehaviorController" parent_id_path=PackedInt32Array(2067099248, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1871,6 +2707,10 @@ movement_speed = 377.0
 [node name="ScoutDrone79" parent="Targets" unique_id=1124659036 instance=ExtResource("10_xpbyc")]
 position = Vector2(-6205, 303)
 activation_time = 3.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone79" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone79/BehaviorController" parent_id_path=PackedInt32Array(1124659036, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1881,6 +2721,10 @@ movement_speed = 377.0
 position = Vector2(-6513, -55)
 activation_time = 0.1
 
+[node name="HealthBar" parent="Targets/ScoutDrone80" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone80/BehaviorController" parent_id_path=PackedInt32Array(1934926842, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1888,6 +2732,10 @@ movement_speed = 377.0
 
 [node name="ScoutDrone81" parent="Targets" unique_id=425557625 instance=ExtResource("10_xpbyc")]
 position = Vector2(-6484, 360)
+
+[node name="HealthBar" parent="Targets/ScoutDrone81" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone81/BehaviorController" parent_id_path=PackedInt32Array(425557625, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1898,6 +2746,10 @@ movement_speed = 377.0
 position = Vector2(-5825, 269)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone82" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone82/BehaviorController" parent_id_path=PackedInt32Array(1288813520, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1906,6 +2758,10 @@ movement_speed = 377.0
 [node name="ScoutDrone83" parent="Targets" unique_id=793981069 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5789, 658)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone83" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone83/BehaviorController" parent_id_path=PackedInt32Array(793981069, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1916,6 +2772,10 @@ movement_speed = 377.0
 position = Vector2(-5825, 269)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone84" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone84/BehaviorController" parent_id_path=PackedInt32Array(1027205647, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1924,6 +2784,10 @@ movement_speed = 377.0
 [node name="ScoutDrone85" parent="Targets" unique_id=700497545 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5825, 269)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone85" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone85/BehaviorController" parent_id_path=PackedInt32Array(700497545, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1934,6 +2798,10 @@ movement_speed = 377.0
 position = Vector2(-5825, 269)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone86" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone86/BehaviorController" parent_id_path=PackedInt32Array(1956447868, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1942,6 +2810,10 @@ movement_speed = 377.0
 [node name="ScoutDrone87" parent="Targets" unique_id=2026396688 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5562, 158)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone87" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone87/BehaviorController" parent_id_path=PackedInt32Array(2026396688, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1952,6 +2824,10 @@ movement_speed = 377.0
 position = Vector2(-5526, 389)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone88" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone88/BehaviorController" parent_id_path=PackedInt32Array(1217080395, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1960,6 +2836,10 @@ movement_speed = 377.0
 [node name="ScoutDrone89" parent="Targets" unique_id=965056037 instance=ExtResource("10_xpbyc")]
 position = Vector2(-5834, 31)
 activation_time = 10.0
+
+[node name="HealthBar" parent="Targets/ScoutDrone89" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone89/BehaviorController" parent_id_path=PackedInt32Array(965056037, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
@@ -1970,6 +2850,10 @@ movement_speed = 377.0
 position = Vector2(-5805, 446)
 activation_time = 10.0
 
+[node name="HealthBar" parent="Targets/ScoutDrone90" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
+
 [node name="FlyDirectionBehavior" parent="Targets/ScoutDrone90/BehaviorController" parent_id_path=PackedInt32Array(1888890100, 334432352) index="0" unique_id=1341184769]
 direction = Vector2(1, 0)
 distance = 50000.0
@@ -1979,8 +2863,9 @@ movement_speed = 377.0
 position = Vector2(791, 1269)
 activation_time = 1.0
 
-[node name="CollisionShape2D" parent="Targets/Drone" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone/BehaviorController" parent_id_path=PackedInt32Array(1235655881, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -1989,8 +2874,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(1084, 1269)
 activation_time = 2.0
 
-[node name="CollisionShape2D" parent="Targets/Drone2" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone2" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone2/BehaviorController" parent_id_path=PackedInt32Array(16834523, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -1999,8 +2885,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(541, 1269)
 activation_time = 4.0
 
-[node name="CollisionShape2D" parent="Targets/Drone3" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone3" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone3/BehaviorController" parent_id_path=PackedInt32Array(222059649, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2009,8 +2896,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(-1155, 1269)
 activation_time = 25.0
 
-[node name="CollisionShape2D" parent="Targets/Drone4" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone4" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone4/BehaviorController" parent_id_path=PackedInt32Array(1888243794, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2019,8 +2907,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(-862, 1269)
 activation_time = 27.0
 
-[node name="CollisionShape2D" parent="Targets/Drone5" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone5" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone5/BehaviorController" parent_id_path=PackedInt32Array(165635790, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2029,8 +2918,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(-1405, 1269)
 activation_time = 26.0
 
-[node name="CollisionShape2D" parent="Targets/Drone6" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone6" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone6/BehaviorController" parent_id_path=PackedInt32Array(292210308, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2039,8 +2929,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(2537, 1302)
 activation_time = 47.0
 
-[node name="CollisionShape2D" parent="Targets/Drone7" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone7" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone7/BehaviorController" parent_id_path=PackedInt32Array(981169516, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2049,8 +2940,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(2830, 1302)
 activation_time = 50.0
 
-[node name="CollisionShape2D" parent="Targets/Drone8" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone8" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone8/BehaviorController" parent_id_path=PackedInt32Array(275841809, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2059,8 +2951,9 @@ target_marker = NodePath("../../../../DroneStartMarker")
 position = Vector2(2287, 1302)
 activation_time = 48.0
 
-[node name="CollisionShape2D" parent="Targets/Drone9" index="1" unique_id=768504801]
-shape = SubResource("RectangleShape2D_wam8k")
+[node name="HealthBar" parent="Targets/Drone9" index="2" unique_id=137221179]
+position = Vector2(-30, -112)
+vertical_offset = -112.0
 
 [node name="FlyToMarker" parent="Targets/Drone9/BehaviorController" parent_id_path=PackedInt32Array(793087289, 334432352) index="0" unique_id=335442041 node_paths=PackedStringArray("target_marker")]
 target_marker = NodePath("../../../../DroneStartMarker")
@@ -2090,12 +2983,49 @@ metadata/_edit_lock_ = true
 [node name="Transitions" parent="." unique_id=289134373 instance=ExtResource("13_vp847")]
 start_fully_covered = true
 
+[node name="Crate" type="Sprite2D" parent="." unique_id=737849332]
+position = Vector2(2879, 782)
+scale = Vector2(0.57584345, 0.57584345)
+texture = ExtResource("15_fsdd5")
+
+[node name="Crate2" type="Sprite2D" parent="." unique_id=1555043354]
+position = Vector2(-888, 727.00006)
+scale = Vector2(0.57584345, 0.57584345)
+texture = ExtResource("15_fsdd5")
+
+[node name="Crate3" type="Sprite2D" parent="." unique_id=725864062]
+position = Vector2(-888, 456)
+scale = Vector2(0.57584345, 0.57584345)
+texture = ExtResource("15_fsdd5")
+
+[node name="Crate4" type="Sprite2D" parent="." unique_id=854833949]
+position = Vector2(4017, 818)
+scale = Vector2(0.57584345, 0.57584345)
+texture = ExtResource("15_fsdd5")
+
+[node name="RedBarell" type="Sprite2D" parent="." unique_id=125074029]
+position = Vector2(-3192.3198, 764)
+scale = Vector2(0.5, 0.486)
+texture = ExtResource("15_w0u7a")
+
+[node name="RedBarell2" type="Sprite2D" parent="." unique_id=1574250454]
+position = Vector2(-2903, 778)
+scale = Vector2(0.5, 0.486)
+texture = ExtResource("15_w0u7a")
+
+[node name="RedBarell3" type="Sprite2D" parent="." unique_id=324791265]
+position = Vector2(-3565, 764)
+scale = Vector2(0.5, 0.486)
+texture = ExtResource("15_w0u7a")
+
+[node name="RedBarell4" type="Sprite2D" parent="." unique_id=1535460230]
+position = Vector2(3432, 776)
+scale = Vector2(0.5, 0.486)
+texture = ExtResource("15_w0u7a")
+
 [editable path="CameraEffects"]
 [editable path="Targets/ScoutDrone"]
 [editable path="Targets/ScoutDrone2"]
-[editable path="Targets/ScoutDrone3"]
-[editable path="Targets/ScoutDrone4"]
-[editable path="Targets/ScoutDrone5"]
 [editable path="Targets/ScoutDrone6"]
 [editable path="Targets/ScoutDrone7"]
 [editable path="Targets/ScoutDrone8"]
@@ -2109,11 +3039,7 @@ start_fully_covered = true
 [editable path="Targets/ScoutDrone16"]
 [editable path="Targets/ScoutDrone17"]
 [editable path="Targets/ScoutDrone18"]
-[editable path="Targets/ScoutDrone19"]
 [editable path="Targets/ScoutDrone20"]
-[editable path="Targets/ScoutDrone21"]
-[editable path="Targets/ScoutDrone22"]
-[editable path="Targets/ScoutDrone23"]
 [editable path="Targets/ScoutDrone24"]
 [editable path="Targets/ScoutDrone25"]
 [editable path="Targets/ScoutDrone26"]
