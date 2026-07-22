@@ -110,6 +110,10 @@ func fire_hitscan(
 		if collider == null:
 			break
 
+		var hit_position: Vector2 = (
+			result.get("position")
+		)
+
 		var shootable: Shootable = _find_shootable(
 			collider
 		)
@@ -142,7 +146,7 @@ func fire_hitscan(
 		if penetration_power > 0.0:
 			damage_ratio = clampf(
 				penetration_before_hit
-					/ penetration_power,
+				/ penetration_power,
 				0.0,
 				1.0
 			)
@@ -165,7 +169,7 @@ func fire_hitscan(
 
 		shootable.receive_bullet(
 			damage_dealt,
-			target_position,
+			hit_position,
 			maxf(
 				remaining_penetration,
 				0.0
@@ -186,7 +190,6 @@ func fire_hitscan(
 			break
 
 	return shot_hit_something
-
 
 func _find_shootable(
 	collider: CollisionObject2D

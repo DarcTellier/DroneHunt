@@ -34,6 +34,11 @@ func receive_bullet(
 	if is_destroyed:
 		return
 
+	_spawn_bullet_impact(
+		hit_position,
+		remaining_penetration
+	)
+
 	health -= damage
 
 	print(
@@ -54,6 +59,14 @@ func receive_bullet(
 
 	if health <= 0.0:
 		destroy()
+
+
+func _spawn_bullet_impact(
+	_hit_position: Vector2,
+	_remaining_penetration: float
+) -> void:
+	# Child classes override this.
+	pass
 
 
 func destroy() -> void:

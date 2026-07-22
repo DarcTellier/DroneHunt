@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://djb48xwhp386p"]
+
+[ext_resource type="Script" uid="uid://b60a0f8gykwm2" path="res://ConcreteBarrier.gd" id="1_cqymp"]
+[ext_resource type="Texture2D" uid="uid://buf5kg83qv4vl" path="res://Art/bulletHole1.png" id="2_4qjyu"]
+[ext_resource type="Texture2D" uid="uid://deb7hcrm171iq" path="res://Art/Concrete Barrier.png" id="2_at46g"]
+
+[node name="ConcreteBarrier" type="Area2D" unique_id=1483954450]
+z_index = 1
+script = ExtResource("1_cqymp")
+bullet_hole_texture = ExtResource("2_4qjyu")
+minimum_hole_scale = 0.25
+maximum_hole_scale = 0.5
+health = 1000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=99098118]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_at46g")
+
+[node name="DamageSprite" type="Sprite2D" parent="." unique_id=354960760]
+z_index = 2
+scale = Vector2(0.75, 0.75)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1607797475]
+scale = Vector2(0.75, 0.75)
+polygon = PackedVector2Array(-470.6667, -169.33334, -448, -180, 449.33334, -180, 470.6667, -169.33334, 480, -149.33334, 480, 310.6667, 320, 310.6667, 272, 260, 109.333336, 260, 69.333336, 310.6667, -69.333336, 310.6667, -120, 260, -276, 260, -321.33334, 310.6667, -480, 310.6667, -481.33334, -162.66667)
